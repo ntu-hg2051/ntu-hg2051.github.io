@@ -1,0 +1,70 @@
+schedule:
+  - week: 1
+    date: 12 Aug
+    topic: What is Computational Linguistics? Why do it? Why use Python?
+    url: week1.html
+
+  - week: 2
+    date: 19 Aug
+    topic: Basic Types and Data Structures; Using Python to Count Things
+    # url: week2.html
+
+  - week: 3
+    date: 26 Aug
+    topic: Assignment, Expressions, and Control
+    # url: week3.html
+
+  - week: 4
+    date: 02 Sep
+    topic: Text Corpora and Conditional Frequencies
+    # url: week4.html
+
+  - week: 5
+    date: 09 Sep
+    topic: Lexical Resources and WordNet
+    # url: week5.html
+
+  - week: 6
+    date: 16 Sep
+    topic: Processing Raw Text
+    # url: week6.html
+
+  - week: 7
+    date: 23 Sep
+    topic: Mid-review; Working with Software Projects
+    # url: week7.html
+
+  - week: --
+    date: 30 Sep
+    topic: Recess
+    cancelled: true
+
+  - week: 8
+    date: 07 Oct
+    topic: Regular Expressions
+    # url: week8.html
+
+  - week: 9
+    date: 14 Oct
+    topic: N-Grams and Collocations
+    # url: week9.html
+
+  - week: 10
+    date: 21 Oct
+    topic: Part-of-speech Tagging
+    # url: week10.html
+
+  - week: 11
+    date: 28 Oct
+    topic: Classification
+    # url: week11.html
+
+  - week: 12
+    date: 04 Nov
+    topic: Exploring Software Libraries
+    # url: week12.html
+
+  - week: 13
+    date: 11 Nov
+    topic: Review
+    # url: week13.html
