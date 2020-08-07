@@ -1,0 +1,68 @@
+/* Thanks: https://color.adobe.com/PDX-Carpet-color-theme-9282605 */
+html {
+  font-family: "Fira Sans", sans-serif;
+  font-size: large;
+  text-align: justify;
+}
+
+a:link {
+  color: #26488c;
+}
+
+a:visited {
+  color: #9185d6;
+}
+
+a:hover {
+  color: #9185d6;
+}
+
+a:active {
+  color: #f24d67;
+}
+
+body {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background: #ffffff;
+}
+
+footer {
+  margin-top: auto;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+}
+header > div {
+  margin: 8px;
+  padding: 8px;
+}
+header .info {
+  flex: 1;
+}
+
+table.schedule {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.schedule td {
+  padding: 1ex 1em;
+}
+table.schedule tr.cancelled {
+  background-color: rgba(14, 207, 184, 0.15);
+}
+table.schedule thead {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 799px) {
+  html {
+    font-size: small;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
