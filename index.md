@@ -24,7 +24,7 @@ schedule:
   - week: 1
     date: 12 Aug
     topic: What is Computational Linguistics? Why do it? Why use Python?
-    # url: week1.html
+    url: week1.html
 
   - week: 2
     date: 19 Aug
@@ -95,8 +95,17 @@ schedule:
 ## Resources
 
 - Python -- <https://www.python.org/>
+  - The Python Tutorial (official docs) -- <https://docs.python.org/3/tutorial/>
+  - The Python Standard Library (official docs) -- <https://docs.python.org/3/library/index.html>
+  - Learn Python in 10 Minutes (quick guide) -- <https://www.stavros.io/tutorials/python/>
+  - Dive Into Python 3 (free ebook) -- <https://diveintopython3.problemsolving.io/>
 - Git -- <https://git-scm.com/>
+  - Official documentation (manuals, cheat sheets, videos) -- <https://git-scm.com/doc>
 - GitHub -- <https://github.com/>
+  - GitHub Guides -- <https://guides.github.com/>
 - Visual Studio Code -- <https://code.visualstudio.com/>
+  - Documentation -- <https://code.visualstudio.com/docs>
+  - Using Python in VS Code -- <https://code.visualstudio.com/docs/python/python-tutorial>
 - NLTK -- <http://www.nltk.org/>
-- StackOverflow -- <https://stackoverflow.com/> (very useful site for programming questions)
+  - Natural Language Processing with Python (free ebook) -- <http://www.nltk.org/book/>
+- StackOverflow (popular programming Q&A site)-- <https://stackoverflow.com/>

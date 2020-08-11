@@ -15,9 +15,11 @@ TARGETS := $(addprefix $(BRANCH)/,$(patsubst src/%,%,$(SOURCES:%.md=%.html)))
 SASSFILES = $(wildcard css/*.scss)
 CSSFILES = $(addprefix $(BRANCH)/,$(SASSFILES:%.scss=%.css))
 
+PDFS = $(addprefix $(BRANCH)/,$(wildcard static/*.pdf))
+
 all: init clean html commit
 
-html: $(CSSFILES) $(INDEX) $(TARGETS)
+html: $(CSSFILES) $(PDFS) $(INDEX) $(TARGETS)
 
 $(INDEX): index.md
 	pandoc -s --template "templates/index" $(CSS) -f markdown -t html5 -o "$@" "$<"
@@ -28,10 +30,14 @@ $(BRANCH)/%.html: src/%.md
 $(BRANCH)/css/%.css: css/%.scss
 	sass "$<" "$@"
 
+$(BRANCH)/static/%.pdf: static/%.pdf
+	cp "$<" "$@"
+
 $(BRANCH):
 	git clone "$(REPO)" "$(BRANCH)"
 	(cd $(BRANCH) && git checkout $(BRANCH)) || (cd $(BRANCH) && git checkout --orphan $(BRANCH) && git rm -rf .)
 	mkdir $(BRANCH)/css
+	mkdir $(BRANCH)/static
 
 serve:
 	cd $(BRANCH) && python3 -m http.server
