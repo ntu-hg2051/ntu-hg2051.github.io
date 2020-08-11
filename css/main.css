@@ -22,7 +22,7 @@ a:active {
 }
 
 body {
-  max-width: 1000px;
+  max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
@@ -33,16 +33,9 @@ footer {
   margin-top: auto;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-}
-header > div {
-  margin: 8px;
-  padding: 8px;
-}
-header .info {
-  flex: 1;
+p.abstract {
+  margin: 1ex auto;
+  max-width: 768px;
 }
 
 table.schedule {
@@ -52,7 +45,10 @@ table.schedule {
 table.schedule td {
   padding: 1ex 1em;
 }
-table.schedule tr.cancelled {
+table.schedule tr:hover {
+  background-color: rgba(145, 133, 214, 0.15);
+}
+table.schedule tr.cancelled, table.schedule tr.cancelled:hover {
   background-color: rgba(14, 207, 184, 0.15);
 }
 table.schedule thead {
