@@ -5,7 +5,6 @@ BRANCH = gh-pages
 
 # Pandoc parameters
 TEMPLATE = --template "templates/main"
-FOOTER = -A src/_footer.html
 CSS = -c "css/main.css"
 
 # Find sources and determine targets
@@ -21,10 +20,10 @@ all: init clean html commit
 html: $(CSSFILES) $(INDEX) $(TARGETS)
 
 $(INDEX): index.md
-	pandoc -s --template "templates/index" --metadata-file "config.yml" $(CSS) $(FOOTER) -f markdown -t html5 -o "$@" "$<"
+	pandoc -s --template "templates/index" $(CSS) -f markdown -t html5 -o "$@" "$<"
 
 $(BRANCH)/%.html: src/%.md
-	pandoc -s $(TEMPLATE) $(CSS) $(FOOTER) -f markdown -t html5 -o "$@" "$<"
+	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown -t html5 -o "$@" "$<"
 
 $(BRANCH)/css/%.css: css/%.scss
 	sass "$<" "$@"

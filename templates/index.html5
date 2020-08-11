@@ -45,23 +45,32 @@ $include-before$
 $endfor$
 $if(title)$
 <header id="title-block-header">
-<h1 class="title">$title$</h1>
+<h1 class="title">$if(title-prefix)$$title-prefix$ – $endif$$title$</h1>
 $if(subtitle)$
 <p class="subtitle">$subtitle$</p>
 $endif$
-$for(author)$
-<p class="author">$author$</p>
+$-- Instructor Listing ---------
+$for(instructor)$
+<p class="instructor">$instructor.name$$if(instructor.email)$ &lt;<a href="mailto:$instructor.email$$if(title-prefix)$?subject=[$title-prefix$]$endif$">$instructor.email$</a>&gt;$endif$</p>
 $endfor$
 $if(date)$
 <p class="date">$date$</p>
 $endif$
+$if(location)$
+<p class="location">$location$</p>
+$endif$
 </header>
 $endif$
 <main>
-$body$
-</main>
+$-- Course Description ---------
+$if(abstract)$
+<p class="abstract">
+$abstract$
+</p>
+$endif$
 $-- Schedule Table -------------
 $if(schedule)$
+<h2>Schedule</h2>
 <table class="schedule">
   <thead>
     <tr>
@@ -81,7 +90,10 @@ $for(schedule)$
 $endfor$
 </table>
 $endif$
-
+</main>
+$-- Main Body ------------------
+$body$
+$-- Footers --------------------
 $for(include-after)$
 $include-after$
 $endfor$

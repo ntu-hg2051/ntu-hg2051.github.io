@@ -24,9 +24,8 @@ a:visited { color: $PDX-Carpet-3; }
 a:hover { color: $PDX-Carpet-3; }
 a:active { color: $PDX-Carpet-1; }
 
-
 body {
-    max-width: 1000px;
+    max-width: 1024px;
     margin-left: auto;
     margin-right: auto;
     padding: 10px;
@@ -36,24 +35,19 @@ footer {
     margin-top: auto;
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-
-    >div {
-        margin: 8px;
-        padding: 8px;
-    }
-    .info {
-        flex: 1;
-    }
+p.abstract {
+    margin: 1ex auto;
+    max-width: 768px;
 }
 
 table.schedule {
     width: 100%;
     td { padding: 1ex 1em; }
     border-collapse: collapse;
-    tr.cancelled {
+    tr:hover {
+        background-color: $PDX-Carpet-3-Light;
+    }
+    tr.cancelled, tr.cancelled:hover {
         background-color: $PDX-Carpet-5-Light;
     }
     thead { font-weight: bold; }
