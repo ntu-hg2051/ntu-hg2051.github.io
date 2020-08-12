@@ -36,8 +36,8 @@ $(BRANCH)/static/%.pdf: static/%.pdf
 $(BRANCH):
 	git clone "$(REPO)" "$(BRANCH)"
 	(cd $(BRANCH) && git checkout $(BRANCH)) || (cd $(BRANCH) && git checkout --orphan $(BRANCH) && git rm -rf .)
-	mkdir $(BRANCH)/css
-	mkdir $(BRANCH)/static
+	mkdir -p $(BRANCH)/css
+	mkdir -p $(BRANCH)/static
 
 serve:
 	cd $(BRANCH) && python3 -m http.server
