@@ -29,7 +29,7 @@ schedule:
   - week: 2
     date: 19 Aug
     topic: Basic Types and Data Structures; Using Python to Count Things
-    # url: week2.html
+    url: week2.html
 
   - week: 3
     date: 26 Aug
@@ -91,6 +91,12 @@ schedule:
     topic: Review
     # url: week13.html
 ---
+
+## Course Pages
+
+- [Environment Setup](environment-setup.html) -- instructions for setting up your computer for HG2051
+- [Glossary](glossary.html) -- definitions of some technical terms
+- [Using Visual Studio Code](using-vscode.html) -- a guide to the interface, concepts, and usage of Visual Studio Code
 
 ## Resources
 

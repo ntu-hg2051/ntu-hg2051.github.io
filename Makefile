@@ -15,22 +15,22 @@ TARGETS := $(addprefix $(BRANCH)/,$(patsubst src/%,%,$(SOURCES:%.md=%.html)))
 SASSFILES = $(wildcard css/*.scss)
 CSSFILES = $(addprefix $(BRANCH)/,$(SASSFILES:%.scss=%.css))
 
-PDFS = $(addprefix $(BRANCH)/,$(wildcard static/*.pdf))
+STATICFILES = $(addprefix $(BRANCH)/,$(wildcard static/*))
 
 all: init clean html commit
 
-html: $(CSSFILES) $(PDFS) $(INDEX) $(TARGETS)
+html: $(CSSFILES) $(STATICFILES) $(INDEX) $(TARGETS)
 
-$(INDEX): index.md
+$(INDEX): index.md templates/index.html5
 	pandoc -s --template "templates/index" $(CSS) -f markdown -t html5 -o "$@" "$<"
 
 $(BRANCH)/%.html: src/%.md
-	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown -t html5 -o "$@" "$<"
+	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown --highlight-style pygments -t html5 -o "$@" "$<"
 
 $(BRANCH)/css/%.css: css/%.scss
 	sass "$<" "$@"
 
-$(BRANCH)/static/%.pdf: static/%.pdf
+$(BRANCH)/static/%: static/%
 	cp "$<" "$@"
 
 $(BRANCH):

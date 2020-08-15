@@ -8,9 +8,7 @@ title: 'HG2051: Week 1'
 
 ## Environment Setup
 
-For this course, in addition to [Python][python], we will be using
-[Git][git] for version control an [Visual Studio Code][vscode] as our
-editor and interface for Git commands. Install these tools.
+* See [Configuring a Development Environment](environment-setup.html)
 
 ## Git Basics
 
@@ -49,7 +47,7 @@ editor and interface for Git commands. Install these tools.
 
 ## Homework 1
 
-See invite for GitHub
+See invite for GitHub on BlackBoard (NTULearn).
 
 [vscode]: https://code.visualstudio.com/
 [git]: https://git-scm.com/

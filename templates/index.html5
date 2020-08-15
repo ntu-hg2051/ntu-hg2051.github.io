@@ -90,9 +90,9 @@ $for(schedule)$
 $endfor$
 </table>
 $endif$
-</main>
 $-- Main Body ------------------
 $body$
+</main>
 $-- Footers --------------------
 $for(include-after)$
 $include-after$
