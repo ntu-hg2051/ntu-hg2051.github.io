@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Configuring a Development Environment</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Configuring a Development Environment</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#python">Python</a></li>
+<li><a href="#git">Git</a></li>
+<li><a href="#visual-studio-code">Visual Studio Code</a></li>
+<li><a href="#workspace">Workspace</a></li>
+<li><a href="#test-it-out">Test It Out</a></li>
+</ul>
+</nav>
+<main>
+<p>For this course we will all use the same software, namely <a href="#python">Python</a>, <a href="#git">Git</a>, and <a href="#visual-studio-code">Visual Studio Code</a>, so that we all have nearly the same experience, regardless of platform (Windows, macOS, Linux). We will also create a <a href="#workspace">workspace</a> on our computers for storing work, Python dependencies, software preferences, etc.</p>
+<h2 id="python">Python</h2>
+<p>For running the code we write, we will need a <a href="https://www.python.org/">Python</a> interpreter. This is perhaps the most challenging to set up because each platform does it differently. Make sure you get Python version 3.6 or higher (3.8.5 is the highest stable version as of this writing).</p>
+<h4 id="windows">Windows</h4>
+<p>The recommended way is to get the latest version from <a href="https://www.python.org" class="uri">https://www.python.org</a>: <a href="https://www.python.org/ftp/python/3.8.5/python-3.8.5-amd64.exe" class="button">python-3.8.5-amd64.exe</a></p>
+<p>During install, you should select “Add Python 3.8 to PATH”. If you do not, then later in the terminal you may need to use <code>py</code> instead of <code>python</code> or <code>python3</code>. That is, if these don’t work:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="ex">python</span> --version</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="ex">python3</span> --version</a></code></pre></div>
+<p>Try this instead (and let me know if this doesn’t work, either):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="ex">py</span> --version</a></code></pre></div>
+<p>Whichever command returns you a version greater than or equal to 3.6 will be what you can use for this course.</p>
+<p>See <a href="https://docs.python.org/3/using/windows.html#the-full-installer">here</a> for more information.</p>
+<h4 id="macos">macOS</h4>
+<p>macOS machines come with Python 2.7, but this is an old and unsupported version that will not work for our class. The best way to install Python 3 is probably with <a href="https://brew.sh">Homebrew</a>. First, start the Terminal app, and type the following at the prompt:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">/bin/bash</span> -c <span class="st">&quot;</span><span class="va">$(</span><span class="ex">curl</span> -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh<span class="va">)</span><span class="st">&quot;</span></a></code></pre></div>
+<p>This command will download the installer for Homebrew and then run it. Once it’s installed, run the following command in your terminal:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">brew</span> install python3</a></code></pre></div>
+<p>Some more information about installing Python with Homebrew is <a href="https://docs.brew.sh/Homebrew-and-Python">here</a>.</p>
+<h4 id="linux">Linux</h4>
+<p>Python 3 generally comes pre-installed on Linux. In a terminal, you can check the latest version of Python like this:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">python3</span> --version</a></code></pre></div>
+<p>If it says “command ‘python3’ not found” or gives you a version lower than 3.6, you need to install a newer version. How this is done depends on the distribution of Linux, so contact me if you need help.</p>
+<p>On some distributions, notably Ubuntu, you may need to install support for <code>venv</code>, which we use for creating virtual environments (described below). Here’s how you’d do that for Ubuntu:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="fu">sudo</span> apt install python3-venv</a></code></pre></div>
+<h2 id="git">Git</h2>
+<p>For tracking versions of the code we write, we will use <a href="https://git-scm.com/">Git</a>. This is also how we will submit our homework assignments. Installation is straightforward but there are many options. Choose the default for all except for the editor, which may say “vim”. Choose “Visual Studio Code” instead.</p>
+<h4 id="windows-1">Windows</h4>
+<p>Download the latest version from <a href="https://git-scm.com" class="uri">https://git-scm.com</a>: <a href="https://github.com/git-for-windows/git/releases/download/v2.28.0.windows.1/Git-2.28.0-64-bit.exe" class="button">Git-2.28.0-64-bit.exe</a></p>
+<h4 id="macos-1">macOS</h4>
+<p>Use Homebrew to install Git on macOS:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">brew</span> install git</a></code></pre></div>
+<h4 id="linux-1">Linux</h4>
+<p>Install with your package manager. Git’s website has instructions for many distributions: <a href="https://git-scm.com/download/linux" class="uri">https://git-scm.com/download/linux</a></p>
+<h2 id="visual-studio-code">Visual Studio Code</h2>
+<p>Visual Studio Code is the program we use to write code. It also assists with running tests and tracking changes with Git, as well as other advanced features for developers.</p>
+<p>For all platforms you can download an installer from <a href="https://code.visualstudio.com/" class="uri">https://code.visualstudio.com/</a>.</p>
+<table>
+<tbody>
+<tr class="odd">
+<td>Windows</td>
+<td style="text-align: left;"><a href="https://aka.ms/win32-x64-user-stable" class="button">Download</a></td>
+</tr>
+<tr class="even">
+<td>macOS</td>
+<td style="text-align: left;"><a href="https://go.microsoft.com/fwlink/?LinkID=620882" class="button">Download</a></td>
+</tr>
+<tr class="odd">
+<td>Linux</td>
+<td style="text-align: left;"><a href="https://code.visualstudio.com/docs/?dv=linux64_deb" class="button">Download</a> (.deb)</td>
+</tr>
+</tbody>
+</table>
+<p>On macOS you can also use Homebrew, if you prefer:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">brew</span> install visual-studio-code</a></code></pre></div>
+<h4 id="recommended-extensions">Recommended Extensions</h4>
+<p>Visual Studio Code is quite capable on its own, but there are extensions that can make it even more useful for certain uses. I suggest only installing extensions from reputable sources, or those with many users and high ratings, as there’s the possibility of malicious extensions. I recommend the following for now:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a> by Microsoft</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory">Git History</a> by Don Jayamanne</li>
+</ul>
+<p>Visual Studio Code may prompt you to install a “linter” for Python. This is optional, but it’s probably a good idea. It will let you know when you’ve made some kinds of programming mistakes.</p>
+<h2 id="workspace">Workspace</h2>
+<h4 id="creating-a-workspace-folder">Creating a Workspace Folder</h4>
+<p>Now that the software is installed, we need a place to work in. This workspace is a folder (directory) somewhere on your computer (e.g., on the Desktop or whatever makes sense to you). Create it in whatever method you like (e.g., in Windows Explorer or Finder or in a terminal). For these instructions I will assume you named it “HG2051”.</p>
+<p>Once it is created, open Visual Studio Code and open the folder you just created via <em>File</em> &gt; <em>Open Folder</em>. You will see something like this:</p>
+<figure>
+<img src="static/empty-workspace.png" alt="Empty HG2051 Workspace" /><figcaption><em>Empty HG2051 Workspace</em></figcaption>
+</figure>
+<p>Note the “Explorer” side bar (top-left), which is a file and folder view. It shows that you are in the “HG2051” folder. In the terminal panel (bottom-right), the prompt indicates the same thing, i.e., that you are in the “HG2051” folder. If you don’t see the terminal, try pressing <kbd>Ctrl-`</kbd>, or use the menu <em>View</em> &gt; <em>Terminal</em>. Note that your prompt may look a bit different, depending on which shell and platform you’re using.</p>
+<h4 id="create-a-virtual-environment">Create a Virtual Environment</h4>
+<p>The next step here is to create a virtual environment, which is a subfolder that contains the Python packages we will use for this course. You can create a virtual environment for every assignment if you prefer, but for now lets just create one. Enter the following command into Visual Studio Code’s terminal (you may need to replace <code>python3</code> with <code>py</code> on Windows):</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb9-1" title="1"><span class="ex">python3</span> -m venv env</a></code></pre></div>
+<p>This calls the Python module <code>venv</code>, which creates virtual environments, and has it create one called “env” (you can name it whatever you like, but let’s stick with “env”). If successful, it will look like the following. If it did not succeed, please contact me.</p>
+<figure>
+<img src="static/create-env.png" alt="Creating a Virtual Environment" /><figcaption><em>Creating a Virtual Environment</em></figcaption>
+</figure>
+<p>Now notice in the Explorer side bar that the “env” folder is created. In the terminal, I also executed the <code>ls</code> command, which lists the contents of the current folder, showing that “env” folder exists. You don’t need to worry about the contents of the “env” directory except for the script to activate the environment.</p>
+<p>If you see a pop-up like the following (perhaps when editing a Python file), go ahead and click “Yes”:</p>
+<figure>
+<img src="https://code.visualstudio.com/assets/docs/python/environments/python-environment-prompt.png" alt="Auto-detection of a New Virtual Environment" /><figcaption><em>Auto-detection of a New Virtual Environment</em></figcaption>
+</figure>
+<p>You may get an error on Windows, though. For this, see below.</p>
+<h4 id="activating-the-virtual-environment">Activating the Virtual Environment</h4>
+<p>Creating the virtual environment just makes a new folder and directories, but to use it you must activate it. An activated virtual environment directs Python to use the packages within the folder and not those installed elsewhere on your computer. Users on macOS or Linux can simply run the following command (and let me know if it doesn’t work):</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="bu">source</span> env/bin/activate</a></code></pre></div>
+<p>Windows users may have more work to do, because Windows by default blocks you from running “untrusted” scripts. To allow the current session to activate the virtual environment, you can change Visual Studio Code’s settings so PowerShell can run these scripts. Open the settings by typing <kbd>Ctrl-,</kbd> or use the menu <em>File</em> &gt; <em>Preferences</em> &gt; <em>Settings</em>, then search for the following setting:</p>
+<pre><code>terminal.integrated.shellArgs.windows</code></pre>
+<figure>
+<img src="static/windows-find-executionpolicy-setting.png" alt="Finding the Setting" /><figcaption><em>Finding the Setting</em></figcaption>
+</figure>
+<p>You can choose to modify the setting for your whole computer (“User”) or only for our workspace. Selecting “Workspace” is enough, but you will need to change this setting again if you ever delete and recreate the workspace folder. Then click on “Edit in settings.json” and change the value from the default of <code>null</code> to <code>"-ExecutionPolicy ByPass"</code>:</p>
+<figure>
+<img src="static/windows-configure-executionpolicy.png" alt="Changing the Setting" /><figcaption><em>Changing the Setting</em></figcaption>
+</figure>
+<p>Save the settings file and close. Now go back to your terminal and try to execute the following:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">.</span>\env\Scripts\Activate.ps1</a></code></pre></div>
+<p>If successful, you’ll see (env) at the beginning of the next prompt. If you see any errors, please let me know. While the environment is active, using <code>python</code> (instead of <code>python3</code> or <code>py</code>) should use the Python version included in the virtual environment.</p>
+<p><em>Thanks to the following Stack Overflow answer</em>: <a href="https://stackoverflow.com/a/61281420/1441112" class="uri">https://stackoverflow.com/a/61281420/1441112</a></p>
+<h2 id="test-it-out">Test It Out</h2>
+<p>If all was successful, you should be able to do the following two things.</p>
+<h4 id="install-the-pytest-dependency">Install the <code>pytest</code> Dependency</h4>
+<p>We will use <a href="https://pytest.org/">pytest</a> for automatic evaluation of our homework assignments. Once the virtual environment is active, run the following command:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb13-1" title="1"><span class="ex">pip</span> install pytest</a></code></pre></div>
+<p>If it says the <code>pip</code> command is not found, ensure your virtual environment is active. If it is and still cannot find it, then try <code>pip3</code> instead. If it still complains after that, then please contact me.</p>
+<p>If it is successful, you’ll see 10 or so packages be installed in addition to pytest. The others are pytest’s dependencies.</p>
+<h4 id="create-a-hello.py-module">Create a <code>hello.py</code> Module</h4>
+<p>Create a new file in Visual Studio Code (<kbd>Ctrl-n</kbd> or <em>File</em> &gt; <em>New File</em>). Type the following into the file:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python terminal"><code class="sourceCode python"><a class="sourceLine" id="cb14-1" title="1"><span class="bu">print</span>(<span class="st">&#39;hello&#39;</span>)</a></code></pre></div>
+<p>Then save (<kbd>Ctrl-s</kbd> or <em>File</em> &gt; <em>Save</em>) the file to <code>hello.py</code> in your current workspace. Once it is saved, you should see the code become colored (syntax-highlighting). This means that Visual Studio Code recognized it as a Python file. If Visual Studio Code also detected your virtual environment, you should see a green “play” icon in the top right. Clicking that will launch a new terminal with the virtual environment active (the shell type will say “Python” instead of “bash” or “PowerShell”) and execute the Python file. You should see “hello” in the terminal output of the command.</p>
+<figure>
+<img src="static/run-hello-py.png" alt="Running hello.py" /><figcaption><em>Running hello.py</em></figcaption>
+</figure>
+</main>
+</body>
+</html>
