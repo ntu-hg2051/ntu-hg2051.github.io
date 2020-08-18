@@ -98,6 +98,20 @@ schedule:
 - [Glossary](glossary.html) -- definitions of some technical terms
 - [Using Visual Studio Code](using-vscode.html) -- a guide to the interface, concepts, and usage of Visual Studio Code
 
+## Grading Criteria:
+
+This course is graded with continuous assessment as follows:
+
+- Assignments -- 40%
+- Group Project -- 20%
+- Mid-term Exam -- 15%
+- Final Exam -- 15%
+- Participation -- 10%
+
+You may also get 1--5% extra credit (not exceeding 100% in the course)
+by submitting a contribution (e.g., code or documentation) to an
+open-source project. Contact me for details.
+
 ## Resources
 
 - Python -- <https://www.python.org/>

@@ -235,8 +235,11 @@ value from the default of `null` to `"-ExecutionPolicy ByPass"`:
 
 ![*Changing the Setting*](static/windows-configure-executionpolicy.png)
 
-Save the settings file and close. Now go back to your terminal and try
-to execute the following:
+Save the settings file and close. Since this is a setting that applies
+when a terminal is started and not one that is running, you will need to
+close the terminal (click the garbage bin icon), then start a new
+terminal (if that doesn't work, try restarting Visual Studio Code). Now,
+in the new terminal, try to execute the following:
 
 ```{.bash .terminal}
 .\env\Scripts\Activate.ps1

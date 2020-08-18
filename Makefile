@@ -25,7 +25,7 @@ $(INDEX): index.md templates/index.html5
 	pandoc -s --template "templates/index" $(CSS) -f markdown -t html5 -o "$@" "$<"
 
 $(BRANCH)/%.html: src/%.md
-	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown --highlight-style pygments -t html5 -o "$@" "$<"
+	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown --highlight-style "templates/monokai.theme" -t html5 -o "$@" "$<"
 
 $(BRANCH)/css/%.css: css/%.scss
 	sass "$<" "$@"
