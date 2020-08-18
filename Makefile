@@ -4,8 +4,12 @@ REPO := $(shell git config --get remote.origin.url)
 BRANCH = gh-pages
 
 # Pandoc parameters
-TEMPLATE = --template "templates/main"
-CSS = -c "css/main.css"
+PANDOC = --standalone \
+		 --from markdown \
+		 --to html5 \
+         --css "css/main.css" \
+		 --title-prefix "HG2051" \
+		 --highlight-style "templates/monokai.theme"
 
 # Find sources and determine targets
 INDEX := $(BRANCH)/index.html
@@ -17,15 +21,15 @@ CSSFILES = $(addprefix $(BRANCH)/,$(SASSFILES:%.scss=%.css))
 
 STATICFILES = $(addprefix $(BRANCH)/,$(wildcard static/*))
 
-all: init clean html commit
+all: init clean html deploy
 
 html: $(CSSFILES) $(STATICFILES) $(INDEX) $(TARGETS)
 
 $(INDEX): index.md templates/index.html5
-	pandoc -s --template "templates/index" $(CSS) -f markdown -t html5 -o "$@" "$<"
+	pandoc --template "templates/index" $(PANDOC) --output "$@" "$<"
 
 $(BRANCH)/%.html: src/%.md
-	pandoc -s $(TEMPLATE) --toc $(CSS) -f markdown --highlight-style "templates/monokai.theme" -t html5 -o "$@" "$<"
+	pandoc --template "templates/main" $(PANDOC) --toc --output "$@" "$<"
 
 $(BRANCH)/css/%.css: css/%.scss
 	sass "$<" "$@"
@@ -42,7 +46,7 @@ $(BRANCH):
 serve:
 	cd $(BRANCH) && python3 -m http.server
 
-commit:
+deploy:
 	cd $(BRANCH) && \
 	   git add . && \
 	   git commit --edit --message="Publish @$$(date)"

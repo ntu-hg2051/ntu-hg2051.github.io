@@ -1,5 +1,4 @@
 ---
-title-prefix: HG2051
 title: Language and the Computer
 instructor:
   - name: Michael Wayne Goodman
