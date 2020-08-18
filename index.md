@@ -94,10 +94,10 @@ schedule:
 ## Course Pages
 
 - [Environment Setup](environment-setup.html) -- instructions for setting up your computer for HG2051
+- [Using Visual Studio Code](using-vscode.html) -- how to get, complete, and submit assignments
 - [Glossary](glossary.html) -- definitions of some technical terms
-- [Using Visual Studio Code](using-vscode.html) -- a guide to the interface, concepts, and usage of Visual Studio Code
 
-## Grading Criteria:
+## Grading Criteria
 
 This course is graded with continuous assessment as follows:
 

@@ -7,7 +7,9 @@ For this course we will all use the same software, namely
 Code](#visual-studio-code), so that we all have nearly the same
 experience, regardless of platform (Windows, macOS, Linux). We will also
 create a [workspace](#workspace) on our computers for storing work,
-Python dependencies, software preferences, etc.
+Python dependencies, software preferences, etc.; test out the creation
+of a [virtual environment](#virtual-environment); and [make sure it all
+works](#test-it-out).
 
 ## Python
 
@@ -150,8 +152,6 @@ you've made some kinds of programming mistakes.
 
 ## Workspace
 
-#### Creating a Workspace Folder
-
 Now that the software is installed, we need a place to work in. This
 workspace is a folder (directory) somewhere on your computer (e.g., on
 the Desktop or whatever makes sense to you). Create it in whatever
@@ -171,14 +171,17 @@ pressing <kbd>Ctrl-`</kbd>, or use the menu *View* > *Terminal*. Note
 that your prompt may look a bit different, depending on which shell and
 platform you're using.
 
-#### Create a Virtual Environment
+## Virtual Environment
 
 The next step here is to create a virtual environment, which is a
 subfolder that contains the Python packages we will use for this course.
-You can create a virtual environment for every assignment if you prefer,
-but for now lets just create one. Enter the following command into
-Visual Studio Code's terminal (you may need to replace `python3` with
-`py` on Windows):
+While in principle we could use one virtual environment for the whole
+course, in practice it's easier to make one for each assignment.
+
+#### Creating the Virtual Environment
+
+Enter the following command into Visual Studio Code's terminal (you may
+need to replace `python3` with `py` on Windows):
 
 ```{.bash .terminal}
 python3 -m venv env
@@ -193,16 +196,29 @@ following. If it did not succeed, please contact me.
 
 Now notice in the Explorer side bar that the "env" folder is created. In
 the terminal, I also executed the `ls` command, which lists the contents
-of the current folder, showing that "env" folder exists. You don't need
-to worry about the contents of the "env" directory except for the script
-to activate the environment.
+of the current folder, showing that the "env" folder exists. You don't
+need to worry about the contents of the "env" directory except for the
+following:
+
+* Activation script
+  - (Windows) -- `env/Scripts/Activate.ps1`
+  - (macOS/Linux) -- `env/bin/activate`
+* Python interpreter
+  - (Windows) -- `env/Scripts/python.exe`
+  - (macOS/Linux) -- `env/bin/python`
 
 If you see a pop-up like the following (perhaps when editing a Python
-file), go ahead and click "Yes":
+file), click "Yes" as it will help Visual Studio Code automatically run
+Python code using your virtual environment:
 
-![*Auto-detection of a New Virtual Environment*](https://code.visualstudio.com/assets/docs/python/environments/python-environment-prompt.png)
+![*Auto-detection of a New Virtual Environment*](static/new-venv.png)
 
 You may get an error on Windows, though. For this, see below.
+
+If you don't see that, try opening the command palette and searching for
+"Python: Select Interpreter". You should see an option for
+`./env/bin/python` (macOS/Linux) or `.\env\Scripts\python.exe`
+(Windows). If not, enter or find the path appropriate for your platform.
 
 #### Activating the Virtual Environment
 
@@ -227,18 +243,17 @@ settings by typing <kbd>Ctrl-,</kbd> or use the menu *File* >
 
 ![*Finding the Setting*](static/windows-find-executionpolicy-setting.png)
 
-You can choose to modify the setting for your whole computer ("User") or
-only for our workspace. Selecting "Workspace" is enough, but you will
-need to change this setting again if you ever delete and recreate the
-workspace folder. Then click on "Edit in settings.json" and change the
-value from the default of `null` to `"-ExecutionPolicy ByPass"`:
+First select "User" so the change affects all your workspaces and not
+just the current folder. Then click on "Edit in settings.json" and
+change the value from the default of `null` to `"-ExecutionPolicy
+ByPass"`:
 
 ![*Changing the Setting*](static/windows-configure-executionpolicy.png)
 
 Save the settings file and close. Since this is a setting that applies
 when a terminal is started and not one that is running, you will need to
 close the terminal (click the garbage bin icon), then start a new
-terminal (if that doesn't work, try restarting Visual Studio Code). Now,
+terminal. If that doesn't work, try restarting Visual Studio Code. Now,
 in the new terminal, try to execute the following:
 
 ```{.bash .terminal}
@@ -269,8 +284,8 @@ pip install pytest
 
 If it says the `pip` command is not found, ensure your virtual
 environment is active. If it is and still cannot find it, then try
-`pip3` instead. If it still complains after that, then please contact
-me.
+`pip3` or `python -m pip` instead. If it still complains after that,
+then please contact me.
 
 If it is successful, you'll see 10 or so packages be installed in
 addition to pytest. The others are pytest's dependencies.
