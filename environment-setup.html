@@ -40,38 +40,38 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  { color: #f8f8f2; }
 @media screen {
 a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
+code span.at { color: #a6e22e; } /* Attribute */
+code span.bn { color: #ae81ff; } /* BaseN */
+code span.bu { color: #66d9ef; } /* BuiltIn */
+code span.cf { color: #f92672; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #e6db74; } /* Char */
+code span.cn { color: #ae81ff; } /* Constant */
+code span.co { color: #88846f; font-style: italic; } /* Comment */
+code span.cv { color: #88846f; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #e6db74; font-style: italic; } /* Documentation */
+code span.dt { color: #66d9ef; } /* DataType */
+code span.dv { color: #ae81ff; } /* DecVal */
 code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #a6e22e; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
+code span.in { color: #e6db74; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #f92672; font-weight: bold; } /* Keyword */
+code span.op { color: #f92672; } /* Operator */
+code span.ot { } /* Other */
+code span.pp { color: #66d9ef; } /* Preprocessor */
+code span.sc { color: #ae81ff; } /* SpecialChar */
+code span.ss { color: #ffe792; } /* SpecialString */
+code span.st { color: #ffe792; } /* String */
+code span.va { color: #f8f8f2; } /* Variable */
+code span.vs { color: #e6db74; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -185,7 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <figure>
 <img src="static/windows-configure-executionpolicy.png" alt="Changing the Setting" /><figcaption><em>Changing the Setting</em></figcaption>
 </figure>
-<p>Save the settings file and close. Now go back to your terminal and try to execute the following:</p>
+<p>Save the settings file and close. Since this is a setting that applies when a terminal is started and not one that is running, you will need to close the terminal (click the garbage bin icon), then start a new terminal (if that doesn’t work, try restarting Visual Studio Code). Now, in the new terminal, try to execute the following:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash terminal"><code class="sourceCode bash"><a class="sourceLine" id="cb12-1" title="1"><span class="ex">.</span>\env\Scripts\Activate.ps1</a></code></pre></div>
 <p>If successful, you’ll see (env) at the beginning of the next prompt. If you see any errors, please let me know. While the environment is active, using <code>python</code> (instead of <code>python3</code> or <code>py</code>) should use the Python version included in the virtual environment.</p>
 <p><em>Thanks to the following Stack Overflow answer</em>: <a href="https://stackoverflow.com/a/61281420/1441112" class="uri">https://stackoverflow.com/a/61281420/1441112</a></p>
