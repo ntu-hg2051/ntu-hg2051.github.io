@@ -1,5 +1,5 @@
 ---
-title: 'HG2051: Week 1'
+title: 'Week 1'
 ---
 
 ## Introduction

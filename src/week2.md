@@ -1,5 +1,5 @@
 ---
-title: 'HG2051: Week 2'
+title: 'Week 2'
 ---
 
 ## Learning Objectives
