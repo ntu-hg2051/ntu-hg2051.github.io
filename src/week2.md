@@ -4,12 +4,11 @@ title: 'Week 2'
 
 ## Learning Objectives
 
-The goal of this week is to become familiar with three **primary data
-types**---`int`, `float`, and `str`---and two **data
-structures**---`list` and `set`. Additionally, you will learn basic
-variable **assignment**.
+* Data types: [`int`]{.py} [`float`]{.py} [`str`]{.py} [`list`]{.py} [`set`]{.py}
+* Concepts: [assignment]{.py} [functions]{.py} [types-vs-tokens]{.nlp} [tokenization]{.nlp} [normalization]{.nlp} [frequency distributions]{.nlp} [unit tests]{.eng}
+* Tools: [notebooks]{.eng} [NLTK]{.nlp}
 
-We will then use these to count words in some language data.
+(color key: [Python/Programming]{.py} [NLP/CL]{.nlp} [Software Engineering]{.eng})
 
 ## Reading
 

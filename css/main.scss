@@ -108,6 +108,19 @@ pre.sourceCode {
     color: $Code-fg;
 }
 
+span.py, span.nlp, span.eng {
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 4px;
+    // margin: .5em .5em;
+    line-height: 1.8;
+}
+span.py { background-color: $Color-2; }
+span.nlp { background-color: $Color-5; }
+span.eng { background-color: $Color-1; }
+
+
 @media screen and (max-width: 799px) {
     html { font-size: small; }
 }
