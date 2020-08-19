@@ -120,6 +120,26 @@ pre.sourceCode {
   color: #dddddd;
 }
 
+span.py, span.nlp, span.eng {
+  color: white;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 2px 4px;
+  line-height: 1.8;
+}
+
+span.py {
+  background-color: #27488D;
+}
+
+span.nlp {
+  background-color: #0ED0B8;
+}
+
+span.eng {
+  background-color: #F24E67;
+}
+
 @media screen and (max-width: 799px) {
   html {
     font-size: small;
