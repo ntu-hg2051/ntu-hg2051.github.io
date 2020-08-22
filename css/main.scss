@@ -40,6 +40,7 @@ body {
     margin-right: auto;
     padding: 10px;
     background: #ffffff;
+    // color: #eeeeee;
 }
 footer {
     margin-top: auto;
@@ -102,6 +103,7 @@ pre.sourceCode {
     margin: 1ex 2em;
     padding: 1ex 1em;
     width: 99ch;
+    overflow-x: auto;
     border: 3px solid #777;
     border-radius: 6px;
     background-color: $Code-bg;//#f4f4f4;

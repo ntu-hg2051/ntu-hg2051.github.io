@@ -33,7 +33,7 @@ schedule:
   - week: 3
     date: 26 Aug
     topic: Assignment, Expressions, and Control
-    # url: week3.html
+    url: week3.html
 
   - week: 4
     date: 02 Sep
@@ -125,6 +125,22 @@ open-source project. Contact me for details.
 - Visual Studio Code -- <https://code.visualstudio.com/>
   - Documentation -- <https://code.visualstudio.com/docs>
   - Using Python in VS Code -- <https://code.visualstudio.com/docs/python/python-tutorial>
+  - Working with Jupyter Notebooks in Visual Studio Code -- <https://code.visualstudio.com/docs/python/jupyter-support>
 - NLTK -- <http://www.nltk.org/>
   - Natural Language Processing with Python (free ebook) -- <http://www.nltk.org/book/>
 - StackOverflow (popular programming Q&A site)-- <https://stackoverflow.com/>
+
+## Acknowledgments
+
+Previous years of this course were taught by:
+
+- Michael Wayne Goodman:
+  [2019](http://compling.hss.ntu.edu.sg/courses/hg2051/),
+  [2020](#)
+- Francis Bond:
+  2010,
+  2011,
+  2012,
+  2013,
+  2015,
+  [2017](http://compling.hss.ntu.edu.sg/courses/hg2051.2017/)
