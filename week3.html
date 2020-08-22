@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HG2051 – Week 3</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { color: #f8f8f2; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #a6e22e; } /* Attribute */
+code span.bn { color: #ae81ff; } /* BaseN */
+code span.bu { color: #66d9ef; } /* BuiltIn */
+code span.cf { color: #f92672; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #e6db74; } /* Char */
+code span.cn { color: #ae81ff; } /* Constant */
+code span.co { color: #88846f; font-style: italic; } /* Comment */
+code span.cv { color: #88846f; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #e6db74; font-style: italic; } /* Documentation */
+code span.dt { color: #66d9ef; } /* DataType */
+code span.dv { color: #ae81ff; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #a6e22e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #e6db74; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #f92672; font-weight: bold; } /* Keyword */
+code span.op { color: #f92672; } /* Operator */
+code span.ot { } /* Other */
+code span.pp { color: #66d9ef; } /* Preprocessor */
+code span.sc { color: #ae81ff; } /* SpecialChar */
+code span.ss { color: #ffe792; } /* SpecialString */
+code span.st { color: #ffe792; } /* String */
+code span.va { color: #f8f8f2; } /* Variable */
+code span.vs { color: #e6db74; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Week 3</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#reading">Reading</a><ul>
+<li><a href="#control-flow">Control Flow</a></li>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#strings-methods">Strings Methods</a></li>
+<li><a href="#list-methods-and-other-uses">List Methods and Other Uses</a></li>
+<li><a href="#the-in-operator">The <code>in</code> Operator</a></li>
+<li><a href="#stopwords">Stopwords</a></li>
+</ul></li>
+<li><a href="#testing-your-knowledge">Testing Your Knowledge</a></li>
+</ul>
+</nav>
+<main>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Data types: <span class="py"><code>str</code></span> <span class="py"><code>list</code></span> <span class="py"><code>set</code></span></li>
+<li>Concepts: <span class="py">comparisons</span> <span class="py">conditionals</span> <span class="py">loops</span> <span class="py">comprehensions</span> <span class="py">functions</span> <span class="nlp">filtering</span> <span class="nlp">stopwords</span> <span class="eng">efficiency</span></li>
+<li>Tools: <span class="nlp">NLTK</span></li>
+</ul>
+<p>(color key: <span class="py">Python/Programming</span> <span class="nlp">NLP/CL</span> <span class="eng">Software Engineering</span>)</p>
+<h2 id="reading">Reading</h2>
+<h3 id="control-flow">Control Flow</h3>
+<p>The Python tutorial has a good and concise explanation of Python’s basic control-flow mechanisms:</p>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming">3.2 – First Steps Towards Programming</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html">4 – More Control Flow Tools</a>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#if-statements">4.1 – <code>if</code> Statements</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#for-statements">4.2 – <code>for</code> Statements</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#the-range-function">4.3 – The <code>range()</code> Function</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#break-and-continue-statements-and-else-clauses-on-loops">4.4 – <code>break</code> and <code>continue</code> Statements, and <code>else</code> Clauses on Loops</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#pass-statements">4.5 – <code>pass</code> Statements</a></li>
+</ul></li>
+</ul>
+<h3 id="functions">Functions</h3>
+<p>This section on defining functions extends what we talked about in class in Week 2):</p>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">4.6 – Defining Functions</a></li>
+</ul>
+<h3 id="strings-methods">Strings Methods</h3>
+<p>For now we will cover a subset of the available <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">string methods</a>:</p>
+<ul>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.startswith">str.startswith()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.endswith">str.endswith()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.isalpha">str.isalpha()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.isdigit">str.isdigit()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.split">str.split()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.splitlines">str.splitlines()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.join">str.join()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.lower">str.lower()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.replace">str.replace()</a></li>
+<li><a href="https://docs.python.org/3/library/stdtypes.html#str.strip">str.strip()</a></li>
+</ul>
+<h3 id="list-methods-and-other-uses">List Methods and Other Uses</h3>
+<p>Lists also have a number of useful methods and :</p>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">5.1 – More on Lists</a></li>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#using-lists-as-stacks">5.1.1 – Using Lists as Stacks</a></li>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions">5.1.3 – List Comprehensions</a></li>
+<li><a href="https://docs.python.org/3/tutorial/datastructures.html#the-del-statement">5.2 – The <code>del</code> statement</a></li>
+</ul>
+<h3 id="the-in-operator">The <code>in</code> Operator</h3>
+<p>Many kinds of “containers” in Python (which include strings, lists, sets, and other structures) work with Python’s <code>in</code> operator. For most containers, an <code>x in y</code> operation returns <code>True</code> if <code>x</code> is one of the elements contained in <code>y</code>. For strings, it returns <code>True</code> if <code>x</code> is a subsequence of the elements of <code>y</code>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;&gt;&gt;</span> my_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="op">&gt;&gt;&gt;</span> <span class="dv">2</span> <span class="kw">in</span> my_list           <span class="co"># check for an individual element</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="va">True</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="op">&gt;&gt;&gt;</span> [<span class="dv">1</span>, <span class="dv">2</span>] <span class="kw">in</span> my_list      <span class="co"># this does not work</span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="va">False</span></a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="op">&gt;&gt;&gt;</span> [<span class="dv">1</span>, <span class="dv">2</span>] <span class="kw">in</span> [[<span class="dv">1</span>, <span class="dv">2</span>], <span class="dv">3</span>]  <span class="co"># unless the list actually has [1, 2] as an element</span></a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="va">True</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="op">&gt;&gt;&gt;</span> my_str <span class="op">=</span> <span class="st">&#39;123&#39;</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;2&#39;</span> <span class="kw">in</span> my_str          <span class="co"># a single character is just a string with one character</span></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="va">True</span></a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;12&#39;</span> <span class="kw">in</span> my_str         <span class="co"># `in` with strings checks for substrings</span></a>
+<a class="sourceLine" id="cb1-12" title="12"><span class="va">True</span></a>
+<a class="sourceLine" id="cb1-13" title="13"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;12&#39;</span> <span class="kw">in</span> <span class="st">&#39;1 2 3&#39;</span>        <span class="co"># subsequences must be exact (spaces count)</span></a>
+<a class="sourceLine" id="cb1-14" title="14"><span class="va">False</span></a></code></pre></div>
+<p><strong>Question:</strong> How might you check for the presence of subsequences in lists? (hint: consider the methods or operations in the reading <a href="#list-methods-and-other-uses">above</a>)</p>
+<h3 id="stopwords">Stopwords</h3>
+<p>Finally, also read this section of the NLTK book, but just the part about “stopwords” (just a few sentences and code blocks):</p>
+<ul>
+<li><a href="http://www.nltk.org/book/ch02.html#wordlist-corpora">NLTK 4.1 – Wordlist Corpora</a></li>
+</ul>
+<h2 id="testing-your-knowledge">Testing Your Knowledge</h2>
+<p>Ensure you have the NLTK’s ‘gutenberg’ and ‘stopwords’ corpora downloaded by importing <code>nltk</code> and running the following two commands in Python (after <code>&gt;&gt;&gt;</code>):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> nltk</a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="op">&gt;&gt;&gt;</span> nltk.download(<span class="st">&#39;gutenberg&#39;</span>)</a>
+<a class="sourceLine" id="cb2-3" title="3">[nltk_data] Downloading package gutenberg to</a>
+<a class="sourceLine" id="cb2-4" title="4">[nltk_data]     <span class="op">/</span>home<span class="op">/</span>goodmami<span class="op">/</span>nltk_data...</a>
+<a class="sourceLine" id="cb2-5" title="5">[nltk_data]   Package gutenberg <span class="kw">is</span> already up<span class="op">-</span>to<span class="op">-</span>date<span class="op">!</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="va">True</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="op">&gt;&gt;&gt;</span> nltk.download(<span class="st">&#39;stopwords&#39;</span>)</a>
+<a class="sourceLine" id="cb2-8" title="8">[nltk_data] Downloading package stopwords to</a>
+<a class="sourceLine" id="cb2-9" title="9">[nltk_data]     <span class="op">/</span>home<span class="op">/</span>goodmami<span class="op">/</span>nltk_data...</a>
+<a class="sourceLine" id="cb2-10" title="10">[nltk_data]   Package stopwords <span class="kw">is</span> already up<span class="op">-</span>to<span class="op">-</span>date<span class="op">!</span></a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="va">True</span></a></code></pre></div>
+<p>You can find the available corpora like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;&gt;&gt;</span> nltk.corpus.gutenberg.fileids()</a>
+<a class="sourceLine" id="cb3-2" title="2">[<span class="st">&#39;austen-emma.txt&#39;</span>, <span class="st">&#39;austen-persuasion.txt&#39;</span>, <span class="st">&#39;austen-sense.txt&#39;</span>, <span class="st">&#39;bible-kjv.txt&#39;</span>, <span class="st">&#39;blake-poems.txt&#39;</span>, <span class="st">&#39;bryant-stories.txt&#39;</span>, <span class="st">&#39;burgess-busterbrown.txt&#39;</span>, <span class="st">&#39;carroll-alice.txt&#39;</span>, <span class="st">&#39;chesterton-ball.txt&#39;</span>, <span class="st">&#39;chesterton-brown.txt&#39;</span>, <span class="st">&#39;chesterton-thursday.txt&#39;</span>, <span class="st">&#39;edgeworth-parents.txt&#39;</span>, <span class="st">&#39;melville-moby_dick.txt&#39;</span>, <span class="st">&#39;milton-paradise.txt&#39;</span>, <span class="st">&#39;shakespeare-caesar.txt&#39;</span>, <span class="st">&#39;shakespeare-hamlet.txt&#39;</span>, <span class="st">&#39;shakespeare-macbeth.txt&#39;</span>, <span class="st">&#39;whitman-leaves.txt&#39;</span>]</a></code></pre></div>
+<p>Then get the NLTK’s “raw” (string) version of one of these as follows (here I get “Moby Dick”):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;&gt;&gt;</span> moby_dick <span class="op">=</span> nltk.corpus.gutenberg.raw(<span class="st">&#39;melville-moby_dick.txt&#39;</span>)</a></code></pre></div>
+<p>Now <code>moby_dick</code> is a big string containing the entire book. Use this string and the string methods in your reading to answer the following questions:</p>
+<ul>
+<li>How many lines are in the file?</li>
+<li>Is each line exactly one complete sentence?</li>
+<li>How many tokens are in the file?</li>
+<li>What is the average number of tokens per line?</li>
+</ul>
+<p>Also use list or set comprensions to filter tokens to answer the following questions:</p>
+<ul>
+<li>How many unique, case-normalized tokens are in the book?</li>
+<li>What proportion of the case-normalized tokens are, or are not, stopwords?</li>
+<li>What is the set of tokens in the book that begin with “whale”?</li>
+<li>What is the set of tokens in the book that begin with “whale” and are all alphabetic characters?</li>
+</ul>
+</main>
+</body>
+</html>
