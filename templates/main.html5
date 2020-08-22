@@ -30,7 +30,7 @@ $highlighting-css$
 $endif$
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
 $for(css)$
-  <link rel="stylesheet" href="$css$" />
+  <link rel="stylesheet" href="$css$?v=1" />
 $endfor$
 $if(math)$
   $math$
