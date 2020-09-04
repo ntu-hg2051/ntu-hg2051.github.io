@@ -38,7 +38,8 @@ schedule:
   - week: 4
     date: 02 Sep
     topic: Text Corpora and Conditional Frequencies
-    # url: week4.html
+    url: week4.html
+    notes: "[notebook](static/week4-practice.ipynb)"
 
   - week: 5
     date: 09 Sep
