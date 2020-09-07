@@ -44,7 +44,7 @@ schedule:
   - week: 5
     date: 09 Sep
     topic: Lexical Resources and WordNet
-    # url: week5.html
+    url: week5.html
 
   - week: 6
     date: 16 Sep
