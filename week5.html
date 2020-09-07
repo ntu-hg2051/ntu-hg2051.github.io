@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HG2051 – Week 5</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css?v=1" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Week 5</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#reading">Reading</a></li>
+<li><a href="#testing-your-knowledge">Testing Your Knowledge</a></li>
+</ul>
+</nav>
+<main>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Concepts: <span class="nlp">lexical resources</span> <span class="nlp">Swadesh lists</span> <span class="nlp">pronouncing dictionaries</span> <span class="nlp">wordnets</span></li>
+</ul>
+<p>(color key: <span class="py">Python/Programming</span> <span class="nlp">NLP/CL</span> <span class="eng">Software Engineering</span>)</p>
+<h2 id="reading">Reading</h2>
+<ul>
+<li><a href="http://www.nltk.org/book/ch02.html#lexical-resources">NLTK 2.4 – Lexical Resources</a></li>
+<li><a href="http://www.nltk.org/book/ch02.html#wordnet">NLTK 2.5 – WordNet</a> (<a href="http://www.nltk.org/howto/wordnet.html">How To</a>)</li>
+</ul>
+<h2 id="testing-your-knowledge">Testing Your Knowledge</h2>
+<ul>
+<li><p>Use the <code>nltk.corpus.words</code> wordlist to estimate the following for several text corpora:</p>
+<ul>
+<li>what percentage of the text’s vocabularly are not in the wordlist?</li>
+<li>what percentage of the wordlist are present in the text?</li>
+</ul></li>
+<li><p>Use the ARPABET transcriptions in the <code>nltk.corpus.cmudict</code> corpus to devise a function for identifying rhyming words (how they are identified is up to you). What are the largest clusters of rhyming words?</p></li>
+<li>Use <code>nltk.corpus.wordnet</code> to explore word relations.
+<ul>
+<li>What are the <strong>hyponyms</strong> of <em>student</em>?</li>
+<li>Use the <code>lowest_common_hypernyms()</code> method on synsets to find what is the shared hypernym of <em>student</em> and <em>professor</em>. How about <em>professor</em> and <em>lecturer</em>?</li>
+</ul></li>
+</ul>
+</main>
+</body>
+</html>
