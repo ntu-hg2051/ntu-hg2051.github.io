@@ -18,6 +18,15 @@ title: 'Week 5'
 * [NLTK 2.5 -- WordNet](http://www.nltk.org/book/ch02.html#wordnet)
   ([How To](http://www.nltk.org/howto/wordnet.html))
 
+## Additional Links
+
+* [Peter Norvig's Spelling Corrector](https://norvig.com/spell-correct.html) -- demonstrates something cool you can do with just a little bit of Python
+* [ARPABET](https://en.wikipedia.org/wiki/ARPABET) -- the phonemic transcription system used by the CMU Pronouncing Dictionary
+* WordNet
+  - Documentation of relations: <https://globalwordnet.github.io/gwadoc>
+  - Browse the modern English WordNet: <https://en-word.net/>
+  - The Open Multilingual Wordnet: <http://compling.hss.ntu.edu.sg/omw/>
+
 ## Testing Your Knowledge
 
 * Use the `nltk.corpus.words` wordlist to estimate the following for

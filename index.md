@@ -45,11 +45,12 @@ schedule:
     date: 09 Sep
     topic: Lexical Resources and WordNet
     url: week5.html
+    notes: "[notebook](static/week5-practice.ipynb)"
 
   - week: 6
     date: 16 Sep
     topic: Processing Raw Text
-    # url: week6.html
+    url: week6.html
 
   - week: 7
     date: 23 Sep
