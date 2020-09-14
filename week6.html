@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HG2051 – Week 6</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { color: #f8f8f2; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #a6e22e; } /* Attribute */
+code span.bn { color: #ae81ff; } /* BaseN */
+code span.bu { color: #66d9ef; } /* BuiltIn */
+code span.cf { color: #f92672; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #e6db74; } /* Char */
+code span.cn { color: #ae81ff; } /* Constant */
+code span.co { color: #88846f; font-style: italic; } /* Comment */
+code span.cv { color: #88846f; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #e6db74; font-style: italic; } /* Documentation */
+code span.dt { color: #66d9ef; } /* DataType */
+code span.dv { color: #ae81ff; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #a6e22e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #e6db74; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #f92672; font-weight: bold; } /* Keyword */
+code span.op { color: #f92672; } /* Operator */
+code span.ot { } /* Other */
+code span.pp { color: #66d9ef; } /* Preprocessor */
+code span.sc { color: #ae81ff; } /* SpecialChar */
+code span.ss { color: #ffe792; } /* SpecialString */
+code span.st { color: #ffe792; } /* String */
+code span.va { color: #f8f8f2; } /* Variable */
+code span.vs { color: #e6db74; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css?v=1" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Week 6</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#tldr">tl;dr</a></li>
+<li><a href="#reading">Reading</a></li>
+<li><a href="#additional-information">Additional Information</a><ul>
+<li><a href="#encodings">Encodings</a></li>
+<li><a href="#reading-from-the-web">Reading from the Web</a></li>
+<li><a href="#string-formatting">String Formatting</a></li>
+</ul></li>
+<li><a href="#testing-your-knowledge">Testing Your Knowledge</a></li>
+</ul>
+</nav>
+<main>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Concepts: <span class="eng">encodings</span> <span class="eng">streams</span> <span class="py">open</span> <span class="py">urllib</span> <span class="py">formatting</span> <span class="py">byte strings</span> <span class="py">with statements</span></li>
+</ul>
+<p>(color key: <span class="py">Python/Programming</span> <span class="nlp">NLP/CL</span> <span class="eng">Software Engineering</span>)</p>
+<h2 id="tldr">tl;dr</h2>
+<p>For this week, I want you to understand these two main points before class.</p>
+<ol type="1">
+<li><p>Strings in Python are abstract sequences of <a href="https://home.unicode.org/basic-info/overview/">Unicode</a> code points (generally, every character gets one code point), but whenever these strings leave Python (e.g., get written to disk or transmitted over a network), they must be <strong>encoded</strong> into a sequence of bytes, and there are different <strong>encodings</strong> for doing so. Practically speaking, you should have an idea about what is happening here:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;café&#39;</span>.encode(<span class="st">&#39;utf8&#39;</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">b<span class="st">&#39;caf</span><span class="ch">\xc3\xa9</span><span class="st">&#39;</span></a></code></pre></div></li>
+<li><p>With strings, lists, and other basic data types, you have the entire contents at once, so you can query the size of the data structure and access any part at any time. When reading files or other <strong>streams</strong>, you are using a <strong>buffer</strong>, which only provides a window into part of the file at a time. The size of a buffer is unknown, and access is sequential. In practice, you should understand how to use the <a href="https://docs.python.org/3/library/functions.html#open">open()</a> function to read and write files:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;some-file.txt&#39;</span>) <span class="im">as</span> fh:</a>
+<a class="sourceLine" id="cb2-2" title="2">...     contents <span class="op">=</span> fh.read()</a></code></pre></div></li>
+</ol>
+<h2 id="reading">Reading</h2>
+<ul>
+<li>Encodings
+<ul>
+<li><a href="http://www.nltk.org/book/ch03.html#text-processing-with-unicode">NLTK 3.3 – Text Processing with Unicode</a></li>
+</ul></li>
+<li>Streams
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files">PT 7.2 – Reading and Writing Files</a></li>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects">PT 7.2.1 – Methods of File Objects</a></li>
+<li><a href="http://www.nltk.org/book/ch03.html#accessing-text-from-the-web-and-from-disk">NLTK 3.1 – Accessing Text from the Web and from Disk</a> (maybe just skim this one)</li>
+</ul></li>
+<li>String Formatting
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting">PT 7.1 – Fancier Output Formatting</a></li>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals">PT 7.1.1 – Formatted String Literals</a></li>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#the-string-format-method">PT 7.1.2 – The String format() Method</a></li>
+<li><a href="https://docs.python.org/3/tutorial/inputoutput.html#manual-string-formatting">PT 7.1.3 – Manual String Formatting</a></li>
+</ul></li>
+</ul>
+<h2 id="additional-information">Additional Information</h2>
+<h3 id="encodings">Encodings</h3>
+<p>(XKCD on Unicode: <a href="https://xkcd.com/927/">here</a>, <a href="https://xkcd.com/1137/">here</a>, <a href="https://xkcd.com/1209/">here</a>, <a href="https://xkcd.com/1726/">here</a>, and <a href="https://xkcd.com/1953/">here</a>)</p>
+<p>So far we’ve been working with strings and data in an idealized way but outside of Python the data is <strong>encoded</strong> into sequences of bytes (1s and 0s). There are different ways (<strong>encodings</strong>) string characters can be put into bytes, so the same string in Python may be a different sequence of bits on disk. Observe below how the last letter of <em>café</em> is encoded differently by the UTF-8 and Latin-1 encodings, and it cannot be encoded at all by the ASCII encoding:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;café&#39;</span>.encode(<span class="st">&#39;utf8&#39;</span>)</a>
+<a class="sourceLine" id="cb3-2" title="2">b<span class="st">&#39;caf</span><span class="ch">\xc3\xa9</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;café&#39;</span>.encode(<span class="st">&#39;latin-1&#39;</span>)</a>
+<a class="sourceLine" id="cb3-4" title="4">b<span class="st">&#39;caf</span><span class="ch">\xe9</span><span class="st">&#39;</span></a>
+<a class="sourceLine" id="cb3-5" title="5"><span class="op">&gt;&gt;&gt;</span> <span class="st">&#39;café&#39;</span>.encode(<span class="st">&#39;ascii&#39;</span>)</a>
+<a class="sourceLine" id="cb3-6" title="6">Traceback (most recent call last):</a>
+<a class="sourceLine" id="cb3-7" title="7">  File <span class="st">&quot;&lt;stdin&gt;&quot;</span>, line <span class="dv">1</span>, <span class="kw">in</span> <span class="op">&lt;</span>module<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb3-8" title="8"><span class="pp">UnicodeEncodeError</span>: <span class="st">&#39;ascii&#39;</span> codec can<span class="st">&#39;t encode character &#39;</span><span class="op">\</span>xe9<span class="st">&#39; in position 3: ordinal not in ran(128)</span></a></code></pre></div>
+<p>Where are the 1s and 0s? It wouldn’t be very useful to just print the binary sequence directly, so Python prints non-ASCII or non-printable characters with escape sequences. <code>\xe9</code>, for instance, is the <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> sequence <code>e9</code>, which in a base-10 (decimal) number system has the value 233, corresponding to the <a href="https://codepoints.net/U+00E9">233rd Unicode codepoint</a>.</p>
+<h3 id="reading-from-the-web">Reading from the Web</h3>
+<p>You can use Python’s <a href="https://docs.python.org/3/library/urllib.request.html">urllib.request</a> module to access data on the internet:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> urllib.request</a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="op">&gt;&gt;&gt;</span> the_iliad_url <span class="op">=</span> <span class="st">&#39;http://gutenberg.org/files/6130/6130-0.txt&#39;</span></a>
+<a class="sourceLine" id="cb4-3" title="3"><span class="op">&gt;&gt;&gt;</span> <span class="cf">with</span> urllib.request.urlopen(the_iliad_url) <span class="im">as</span> f:</a>
+<a class="sourceLine" id="cb4-4" title="4">...     the_iliad_raw <span class="op">=</span> f.read()</a></code></pre></div>
+<p>This gets you the byte string of the book (note the <code>b</code> before the string):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" title="1"><span class="op">&gt;&gt;&gt;</span> the_iliad_raw[<span class="dv">0</span>:<span class="dv">60</span>]</a>
+<a class="sourceLine" id="cb5-2" title="2">b<span class="st">&#39;</span><span class="ch">\xef\xbb\xbf</span><span class="st">The Project Gutenberg EBook of The Iliad, by Homer</span><span class="ch">\r\n\r\n</span><span class="st">Thi&#39;</span></a></code></pre></div>
+<p>You still need to decode this to a unicode string, and for that you need to know the encoding. There are 3rd-party projects that try to automatically determine the encoding, such as the popular <a href="https://pypi.org/project/chardet/">chardet</a>. There is also a 3rd-party project <a href="https://requests.readthedocs.io/">requests</a>, which has a nicer interface and more features for making web connections:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="im">import</span> requests</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="op">&gt;&gt;&gt;</span> response <span class="op">=</span> requests.get(<span class="st">&#39;http://gutenberg.org/files/6130/6130-0.txt&#39;</span>)</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="op">&gt;&gt;&gt;</span> response.text[<span class="dv">0</span>:<span class="dv">60</span>]</a>
+<a class="sourceLine" id="cb6-4" title="4"><span class="co">&#39;ï»¿The Project Gutenberg EBook of The Iliad, by Homer</span><span class="ch">\r\n\r\n</span><span class="co">Thi&#39;</span></a></code></pre></div>
+<p>The requests package detects the encoding of the file either from information provided by the web connection or from chardet’s analysis. Character detection is not perfect, though, as can be seen by the first few characters that were improperly decoded, but the rest should be fine.</p>
+<h3 id="string-formatting">String Formatting</h3>
+<p>For historical reasons, there are many ways to construct, or <em>format</em>, strings in Python. Below is a short, opinionated overview.</p>
+<h4 id="manual-formatting">Manual Formatting</h4>
+<p>You can format strings by concatenating all the parts together:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb7-1" title="1"><span class="op">&gt;&gt;&gt;</span> age <span class="op">=</span> <span class="dv">5</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="op">&gt;&gt;&gt;</span> pi <span class="op">=</span> <span class="fl">3.14159265</span></a>
+<a class="sourceLine" id="cb7-3" title="3"><span class="op">&gt;&gt;&gt;</span> name <span class="op">=</span> <span class="st">&#39;Kim&#39;</span></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(<span class="st">&#39;At age &#39;</span> <span class="op">+</span> <span class="bu">str</span>(<span class="dv">5</span>) <span class="op">+</span> <span class="st">&#39;, &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&#39; could recite 6 digits of pi: &#39;</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">round</span>(pi, <span class="dv">5</span>)))</a>
+<a class="sourceLine" id="cb7-5" title="5">At age <span class="dv">5</span>, Kim could recite <span class="dv">6</span> digits of pi: <span class="fl">3.14159</span></a></code></pre></div>
+<p>Don’t do this! It’s ugly and inefficient. However, there are times when the dedicated formatting tools are not sufficient and some manual formatting is required.</p>
+<h4 id="old-printf-style-formatting">Old (printf) Style Formatting</h4>
+<p>You might see code like this:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb8-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(<span class="st">&#39;At age </span><span class="sc">%d</span><span class="st">, </span><span class="sc">%s</span><span class="st"> could recite 6 digits of pi: </span><span class="sc">%.6g</span><span class="st">&#39;</span> <span class="op">%</span> (age, name, pi))</a>
+<a class="sourceLine" id="cb8-2" title="2">At age <span class="dv">5</span>, Kim could recite <span class="dv">6</span> digits of pi: <span class="fl">3.14159</span></a></code></pre></div>
+<p>Don’t do this! It’s outdated and there are better alternatives. Don’t even bother learning it, but it’s good to recognize that this is a way of doing string formatting because some people still use this form.</p>
+<h4 id="str.format">str.format()</h4>
+<p>The printf-style formatting was supplanted by <code>str.format()</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb9-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(<span class="st">&#39;At age </span><span class="sc">{}</span><span class="st">, </span><span class="sc">{}</span><span class="st"> could recite 6 digits of pi: </span><span class="sc">{:.6g}</span><span class="st">&#39;</span>.<span class="bu">format</span>(age, name, pi))</a>
+<a class="sourceLine" id="cb9-2" title="2">At age <span class="dv">5</span>, Kim could recite <span class="dv">6</span> digits of pi: <span class="fl">3.14159</span></a></code></pre></div>
+<p>At first glance this doesn’t seem much better than the previous version, but it’s more capable in complex cases. Also, the placeholders can be given names:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb10-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(<span class="st">&#39;At age </span><span class="sc">{age}</span><span class="st">, </span><span class="sc">{name}</span><span class="st"> could ...&#39;</span>.<span class="bu">format</span>(age<span class="op">=</span>age, name<span class="op">=</span>name))</a>
+<a class="sourceLine" id="cb10-2" title="2">At age <span class="dv">5</span>, Kim could ...</a></code></pre></div>
+<h4 id="f-strings">f-strings</h4>
+<p>The newest method of string formatting uses a similar syntax to str.format(), but does formatting in-place using available variables:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1"><span class="bu">print</span>(<span class="ss">f&#39;At age </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> could recite 6 digits of pi: </span><span class="sc">{pi:.6g}</span><span class="ss">&#39;</span>)</a></code></pre></div>
+<p>These f-strings (“formatted string literals”) are often the most readable and the most efficient, but they are evaluated in-place, meaning that the variables must be defined when the string is encountered. This is in contrast to str.format(), which can be formatted later:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="op">&gt;&gt;&gt;</span> fmt <span class="op">=</span> <span class="st">&#39;</span><span class="sc">{name}</span><span class="st"> says, &quot;hi&quot;&#39;</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="op">&gt;&gt;&gt;</span> <span class="co"># ... later</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="op">&gt;&gt;&gt;</span> <span class="bu">print</span>(fmt.<span class="bu">format</span>(name<span class="op">=</span><span class="st">&#39;Sandy&#39;</span>))</a>
+<a class="sourceLine" id="cb12-4" title="4">Sandy says, <span class="st">&quot;hi&quot;</span></a></code></pre></div>
+<h2 id="testing-your-knowledge">Testing Your Knowledge</h2>
+<p>Go to <a href="http://gutenberg.org/" class="uri">http://gutenberg.org/</a> and find an ebook. Look for the “Plain Text” link, then right click to get the URL of the file (your browser may look different):</p>
+<figure>
+<img src="static/download-gutenberg.png" alt="Copying the URL of a Gutenberg Book" /><figcaption>Copying the URL of a Gutenberg Book</figcaption>
+</figure>
+<p>Now paste the URL into your code file as a string. Use this string to download (with <code>urllib.request</code> or <code>requests</code>, as you prefer) the file.</p>
+<p>Determine what is the encoding of the file, and use that information to decode the raw byte-string (for <code>requests</code>, use <code>response.content</code> instead of <code>response.text</code> to get the byte string).</p>
+<p>Once you’ve decoded the contents to a string, write the string to a file on your computer. You might use a different encoding than the one you used to decode, but not all encodings will be compatible, depending on the characters used in the file.</p>
+<p>Once the file is written, try to open it again in Python.</p>
+<p>For further practice, review section <a href="http://www.nltk.org/book/ch03.html#accessing-text-from-the-web-and-from-disk">3.1</a> from the NLTK book and find out how to tokenize the full string of the book into words.</p>
+</main>
+</body>
+</html>
