@@ -141,6 +141,14 @@ span.eng {
   background-color: #F24E67;
 }
 
+figure img {
+  margin: 1ex auto;
+  border: 1px solid black;
+}
+figure figurecaption {
+  margin: 1ex auto;
+}
+
 @media screen and (max-width: 799px) {
   html {
     font-size: small;
