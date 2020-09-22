@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HG2051 – Week 7</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { color: #f8f8f2; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #a6e22e; } /* Attribute */
+code span.bn { color: #ae81ff; } /* BaseN */
+code span.bu { color: #66d9ef; } /* BuiltIn */
+code span.cf { color: #f92672; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #e6db74; } /* Char */
+code span.cn { color: #ae81ff; } /* Constant */
+code span.co { color: #88846f; font-style: italic; } /* Comment */
+code span.cv { color: #88846f; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #e6db74; font-style: italic; } /* Documentation */
+code span.dt { color: #66d9ef; } /* DataType */
+code span.dv { color: #ae81ff; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #b08000; } /* Float */
+code span.fu { color: #a6e22e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #e6db74; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #f92672; font-weight: bold; } /* Keyword */
+code span.op { color: #f92672; } /* Operator */
+code span.ot { } /* Other */
+code span.pp { color: #66d9ef; } /* Preprocessor */
+code span.sc { color: #ae81ff; } /* SpecialChar */
+code span.ss { color: #ffe792; } /* SpecialString */
+code span.st { color: #ffe792; } /* String */
+code span.va { color: #f8f8f2; } /* Variable */
+code span.vs { color: #e6db74; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css?v=1" />
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Week 7</h1>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#learning-objectives">Learning Objectives</a></li>
+<li><a href="#review-and-quiz">Review and Quiz</a></li>
+<li><a href="#working-with-software-projects">Working with Software Projects</a><ul>
+<li><a href="#python-packages">Python Packages</a></li>
+<li><a href="#licensing">Licensing</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#documenting">Documenting</a></li>
+<li><a href="#distributing">Distributing</a></li>
+</ul></li>
+<li><a href="#testing-your-knowledge">Testing Your Knowledge</a></li>
+</ul>
+</nav>
+<main>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul>
+<li>Concepts: <span class="py">packages</span> <span class="eng">licensing</span> <span class="eng">testing</span> <span class="eng">documentation</span> <span class="eng">distribution</span></li>
+</ul>
+<p>(color key: <span class="py">Python/Programming</span> <span class="nlp">NLP/CL</span> <span class="eng">Software Engineering</span>)</p>
+<h2 id="review-and-quiz">Review and Quiz</h2>
+<p>For the review, please see the <a href="review.html">review of course topics</a>, particularly those for the first quiz.</p>
+<h2 id="working-with-software-projects">Working with Software Projects</h2>
+<p>As you develop your experiments into software projects that others might get value from, you might start to think about how to distribute your code. There are many practices and tools to support software distribution. Some of them are:</p>
+<ul>
+<li><a href="#licensing">choosing a license</a></li>
+<li><a href="#testing">testing the software</a></li>
+<li><a href="#documenting">documenting the project</a></li>
+<li><a href="#distributing">distributing the code</a></li>
+</ul>
+<p>But first, let’s look at how to use Python packages to organize code.</p>
+<h3 id="python-packages">Python Packages</h3>
+<p>When you write some file <code>hw6.py</code>, then it is a Python module that can be imported as follows:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="im">import</span> hw6</a></code></pre></div>
+<p>When working with larger projects, you may need multiple modules, and you may want to group them into <em>packages</em>. On the computer, these are just folders with a special <code>__init__.py</code> file.</p>
+<p>Please read the Python Tutorial’s sections on modules and packages:</p>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/modules.html">PT 6 – Modules</a>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/modules.html#more-on-modules">PT 6.1 – More on Modules</a>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/modules.html#executing-modules-as-scripts">PT 6.1.1 – Executing Modules as Scripts</a></li>
+<li><a href="https://docs.python.org/3/tutorial/modules.html#the-module-search-path">PT 6.1.2 – The Module Search Path</a></li>
+</ul></li>
+<li><a href="https://docs.python.org/3/tutorial/modules.html#packages">PT 6.4 – Packages</a></li>
+</ul></li>
+</ul>
+<p>Organizing your code into modules and packages is one of the first steps to making your code into a project that others might be able to use.</p>
+<h3 id="licensing">Licensing</h3>
+<p>If you want others to use your code, simply making it available (e.g., on GitHub) is not sufficient. The software needs a license which allows others to use, modify, and/or redistribute the code. There are many kinds of <em>open-source</em> licenses, but they generally fall into two groups: permissive and copyleft (see the MIT and GPL licenses, respectively, linked below).</p>
+<p>Licenses are written in legalese that are hard to understand, but the website <a href="https://choosealicense.com/" class="uri">https://choosealicense.com/</a> makes it easy. For instance, you can see simple overviews of the <a href="https://choosealicense.com/licenses/mit/">MIT</a> or <a href="https://choosealicense.com/licenses/gpl-3.0/">GPL</a> licenses, alongside their legal text.</p>
+<p>Please read what happens if you <a href="https://choosealicense.com/no-permission/">don’t choose a license</a>.</p>
+<h3 id="testing">Testing</h3>
+<p>As we’ve witnessed in this course already, code that works on one system might not work well on another. <em>Software testing</em> is the practice of writing tests to help ensure that code works as intended. There are many kinds of tests (skim the <a href="https://en.wikipedia.org/wiki/Software_testing">Wikipedia article</a> to get an idea), and software testing is a whole career path, but I’d like you to focus on just a few:</p>
+<ul>
+<li>Unit testing – ensure each unit (function, module, etc.) is correct</li>
+<li>Regression testing – ensure behavior of a system is correct over time (i.e., across changes)</li>
+<li>Integration testing – ensure that parts of the system interact with each other without errors</li>
+</ul>
+<p>Please see this <a href="https://stackoverflow.com/a/520116/1441112">StackOverflow answer</a>.</p>
+<h3 id="documenting">Documenting</h3>
+<p>Documentation of code helps others (sometimes the author of the code) understand how to use it, what its limitations are, or why it is implemented in a certain way. Please read the following article, which is a good introduction to the documentation of Python projects: <a href="https://docs.python-guide.org/writing/documentation/" class="uri">https://docs.python-guide.org/writing/documentation/</a></p>
+<h3 id="distributing">Distributing</h3>
+<p>Getting your code into the hands of others is <em>software distribution</em>. One way to do this is to put it up on a public code host, such as GitHub. For Python projects, you might add them to the <a href="https://pypi.org/">Python Package Index</a> (PyPI), which allows them to be installed easily using <code>pip</code> (as we have done in this class, for instance here’s the PyPI entry for the NLTK: https://pypi.org/project/nltk/). Adding projects to PyPI requires some metadata, such as the author, compatible Python versions, dependencies, etc. Traditionally users would create a <code>setup.py</code> file (see <a href="https://packaging.python.org/tutorials/packaging-projects/#creating-setup-py">this tutorial</a>, if you’re curious), but recently there have been some more convenient ways of packaging Python (such as <a href="https://flit.readthedocs.io/en/latest/">Flit</a> or <a href="https://python-poetry.org/">Poetry</a>), which use a new standard file called <code>pyproject.toml</code>.</p>
+<h2 id="testing-your-knowledge">Testing Your Knowledge</h2>
+<p>Go the project page for PyDelphin: <a href="https://github.com/delph-in/pydelphin" class="uri">https://github.com/delph-in/pydelphin</a></p>
+<p>Answer the following questions:</p>
+<ul>
+<li>What is the license of the project?</li>
+<li>Is it distributed on PyPI?</li>
+<li>Does it have documentation? If so, where is it at?</li>
+<li>What is the minimum version of Python required?</li>
+<li>Did it ever support Python 2? If so, when (or what version) was this support removed? (hint: which file would you look in for a summary of changes?)</li>
+<li>Is the project actively developed? (e.g., when was the last commit?)</li>
+<li><p>Install the project in a virtual environment with:</p>
+<pre><code>pip install pydelphin[web]</code></pre>
+<p>(the <code>[web]</code> part tells it to get some additional dependencies)</p>
+<p>Now try to follow the documentation to get a parse of the sentence “Kim left and Sandy had lunch, today.” using the web client.</p>
+<ul>
+<li>How many readings (i.e., parses) for the sentence are there?</li>
+<li>How many results were returned?</li>
+<li>How can you increase the number of results returned?</li>
+</ul></li>
+</ul>
+</main>
+</body>
+</html>

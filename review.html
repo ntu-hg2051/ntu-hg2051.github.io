@@ -322,8 +322,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 id="none"><span class="py">None</span></h4>
 <h3 id="control-structures">Control Structures</h3>
 <h4 id="if"><span class="py">if</span></h4>
+<p>An <code>if</code> statement is used for a <em>conditional block</em>—code that is executed only if a condition is true. See the Python Tutorial’s section on <a href="https://docs.python.org/3/tutorial/controlflow.html#if-statements"><code>if</code> Statements</a>.</p>
+<p>Only one thing below will be printed:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb15-1" title="1">word <span class="op">=</span> <span class="st">&#39;Dog&#39;</span></a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="cf">if</span> word <span class="kw">in</span> vocabulary:</a>
+<a class="sourceLine" id="cb15-3" title="3">    <span class="bu">print</span>(word, <span class="st">&#39;exists in the vocabulary&#39;</span>)</a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="cf">elif</span> word.lower() <span class="kw">in</span> vocabulary:</a>
+<a class="sourceLine" id="cb15-5" title="5">    <span class="bu">print</span>(word, <span class="st">&#39;exists in vocabulary when case-normalized&#39;</span>)</a>
+<a class="sourceLine" id="cb15-6" title="6"><span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb15-7" title="7">    <span class="bu">print</span>(word, <span class="st">&#39;does not exist in vocabulary&#39;</span>)</a></code></pre></div>
+<p>Note that if you use multiple <code>if</code> statements instead of <code>elif</code> or <code>else</code>, they will be attempted regardless of whether the previous conditions were true. In the following, both will print if both <code>'Dog'</code> and <code>'dog'</code> are in the vocabulary.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb16-1" title="1">word <span class="op">=</span> <span class="st">&#39;Dog&#39;</span></a>
+<a class="sourceLine" id="cb16-2" title="2"><span class="cf">if</span> word <span class="kw">in</span> vocabulary:</a>
+<a class="sourceLine" id="cb16-3" title="3">    <span class="bu">print</span>(word, <span class="st">&#39;exists in the vocabulary&#39;</span>)</a>
+<a class="sourceLine" id="cb16-4" title="4"><span class="cf">if</span> word.lower() <span class="kw">in</span> vocabulary:</a>
+<a class="sourceLine" id="cb16-5" title="5">    <span class="bu">print</span>(word, <span class="st">&#39;exists in vocabulary when case-normalized&#39;</span>)</a></code></pre></div>
 <h4 id="for"><span class="py">for</span></h4>
+<p>A <code>for</code> statement (also called a for-loop) loops over each item in an iterable. This generally means the loop is bounded by the number of items in the iterable, and it’s used when the iterable items themselves are used inside the loop. See the Python Tutorial’s section on <a href="https://docs.python.org/3/tutorial/controlflow.html#for-statements"><code>for</code> Statements</a>.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb17-1" title="1">numbers <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="cf">for</span> number <span class="kw">in</span> numbers:</a>
+<a class="sourceLine" id="cb17-3" title="3">    square <span class="op">=</span> number<span class="op">**</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb17-4" title="4">    <span class="bu">print</span>(<span class="ss">f&#39;the square of </span><span class="sc">{</span>number<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>square<span class="sc">}</span><span class="ss">&#39;</span>)</a></code></pre></div>
 <h4 id="while"><span class="py">while</span></h4>
+<p>A <code>while</code> statement (also called a while-loop) loops as long as a condition is met. This condition can be just about anything, and sometimes it is <code>True</code>, meaning an infinite loop. See the Python Tutorial’s example of <a href="https://docs.python.org/3/tutorial/introduction.html#first-steps-towards-programming"><code>while</code> statements</a>. While-loops are often used when the number of iterations is not fixed or known in advance, or when there is no iterable whose items are used inside the loop.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb18-1" title="1"><span class="co"># print Fibonacci numbers less than 100</span></a>
+<a class="sourceLine" id="cb18-2" title="2">a <span class="op">=</span> <span class="dv">0</span></a>
+<a class="sourceLine" id="cb18-3" title="3">b <span class="op">=</span> <span class="dv">1</span></a>
+<a class="sourceLine" id="cb18-4" title="4"><span class="cf">while</span> a <span class="op">&lt;</span> <span class="dv">100</span>:</a>
+<a class="sourceLine" id="cb18-5" title="5">    <span class="bu">print</span>(a)</a>
+<a class="sourceLine" id="cb18-6" title="6">    tmp <span class="op">=</span> b  <span class="co"># temporary variable for the old value of b</span></a>
+<a class="sourceLine" id="cb18-7" title="7">    b <span class="op">=</span> b <span class="op">+</span> a</a>
+<a class="sourceLine" id="cb18-8" title="8">    a <span class="op">=</span> tmp</a></code></pre></div>
 <h4 id="comprehensions"><span class="py">Comprehensions</span></h4>
 <h3 id="built-in-functions">Built-in Functions</h3>
 <h4 id="print"><span class="py">print()</span></h4>
