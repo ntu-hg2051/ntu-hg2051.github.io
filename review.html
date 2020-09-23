@@ -262,17 +262,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb11-16" title="16"><span class="va">False</span></a></code></pre></div>
 <h4 id="tuple"><span class="py"><code>tuple</code></span></h4>
 <p>Tuples are immutable sequences of values.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">tuple</span>()                  <span class="co"># use the function to create an empty tuple (using &#39;()&#39; doesn&#39;t work)</span></a>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb12-1" title="1"><span class="op">&gt;&gt;&gt;</span> ()                       <span class="co"># make an empty tuple</span></a>
 <a class="sourceLine" id="cb12-2" title="2">()</a>
-<a class="sourceLine" id="cb12-3" title="3"><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span>, <span class="dv">2</span>                     <span class="co"># use commas to create tuples in general</span></a>
-<a class="sourceLine" id="cb12-4" title="4">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb12-5" title="5"><span class="op">&gt;&gt;&gt;</span> (<span class="dv">1</span>, <span class="dv">2</span>)                   <span class="co"># but often we need parentheses around them</span></a>
-<a class="sourceLine" id="cb12-6" title="6">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb12-7" title="7"><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="bu">tuple</span>([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])  <span class="co"># create tuples from an iterable</span></a>
-<a class="sourceLine" id="cb12-8" title="8"><span class="op">&gt;&gt;&gt;</span> x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]                  <span class="co"># slicing works as expected</span></a>
-<a class="sourceLine" id="cb12-9" title="9">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb12-10" title="10"><span class="op">&gt;&gt;&gt;</span> x.count(<span class="dv">1</span>)               <span class="co"># many list operations work on tuples (but not mutating ones)</span></a>
-<a class="sourceLine" id="cb12-11" title="11"><span class="dv">2</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-3" title="3"><span class="op">&gt;&gt;&gt;</span> <span class="bu">tuple</span>()                  <span class="co"># or use the function</span></a>
+<a class="sourceLine" id="cb12-4" title="4">()</a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="op">&gt;&gt;&gt;</span> (<span class="dv">1</span>)                      <span class="co"># but this doesn&#39;t work (it looks like an expression)</span></a>
+<a class="sourceLine" id="cb12-6" title="6"><span class="dv">1</span></a>
+<a class="sourceLine" id="cb12-7" title="7"><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span>, <span class="dv">2</span>                     <span class="co"># use commas to create tuples in general</span></a>
+<a class="sourceLine" id="cb12-8" title="8">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="op">&gt;&gt;&gt;</span> <span class="dv">1</span>,                       <span class="co"># even for single items</span></a>
+<a class="sourceLine" id="cb12-10" title="10">(<span class="dv">1</span>,)</a>
+<a class="sourceLine" id="cb12-11" title="11"><span class="op">&gt;&gt;&gt;</span> (<span class="dv">1</span>, <span class="dv">2</span>)                   <span class="co"># but often we need parentheses around them</span></a>
+<a class="sourceLine" id="cb12-12" title="12">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb12-13" title="13"><span class="op">&gt;&gt;&gt;</span> x <span class="op">=</span> <span class="bu">tuple</span>([<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])  <span class="co"># create tuples from an iterable</span></a>
+<a class="sourceLine" id="cb12-14" title="14"><span class="op">&gt;&gt;&gt;</span> x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]                  <span class="co"># slicing works as expected</span></a>
+<a class="sourceLine" id="cb12-15" title="15">(<span class="dv">1</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb12-16" title="16"><span class="op">&gt;&gt;&gt;</span> x.count(<span class="dv">1</span>)               <span class="co"># many list operations work on tuples (but not mutating ones)</span></a>
+<a class="sourceLine" id="cb12-17" title="17"><span class="dv">2</span></a></code></pre></div>
 <h4 id="set"><span class="py"><code>set</code></span></h4>
 <p>Sets are containers of unique values.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb13-1" title="1"><span class="op">&gt;&gt;&gt;</span> <span class="bu">set</span>()              <span class="co"># use the function to create an empty set (&#39;{}&#39; creates a dictionary)</span></a>
