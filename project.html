@@ -84,6 +84,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <nav id="TOC">
 <ul>
 <li><a href="#task">Task</a></li>
+<li><a href="#directions-for-students">Directions for Students</a></li>
+<li><a href="#extra-credit">Extra Credit</a><ul>
+<li><a href="#multi-word-expression-mwes">Multi-Word Expression (MWEs)</a></li>
+<li><a href="#error-analysis">Error Analysis</a></li>
+</ul></li>
 </ul>
 </nav>
 <main>
@@ -100,15 +105,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb1-9" title="9">        <span class="cf">else</span>:</a>
 <a class="sourceLine" id="cb1-10" title="10">            pairs.append((word, <span class="va">None</span>))</a>
 <a class="sourceLine" id="cb1-11" title="11">    <span class="cf">return</span> pairs</a></code></pre></div>
-<p>This only pairs words with the first synset WordNet has for the word, or <code>None</code> if there are no synsets. There are ways to improve this:</p>
+<p>This only pairs words with the first synset WordNet has for the word, or <code>None</code> if there are no synsets. You and your group will start with this basic, <em>baseline</em> model, and produce different versions with various improvements. You will then estimate the quality of your tagger against human-annotated <em>gold</em> data.</p>
+<h2 id="directions-for-students">Directions for Students</h2>
+<p>The <code>sense-tag.py</code> script in your project repository is already written and nothing needs to be changed unless you want to specify additional arguments. There are two modules in the <code>hg2051project</code> package:</p>
+<pre><code>hg2051project/
+├── __init__.py
+├── tagger.py   -- contains code for sense tagging
+└── utils.py    -- contains code for miscellaneous tasks (e.g., tokenization)</code></pre>
+<p>You are to modify the <code>tagger.py</code> with any improvements to the sense tagging. Functions may be added or modified in <code>utils.py</code> to improve the preprocessing or add postprocessing.</p>
+<p>You are expected to implement the following improvements:</p>
 <ul>
-<li>Use part-of-speech to narrow down the results</li>
-<li>Avoid annotating rare senses for common words (like <em>I</em> getting the sense for “iodine”)</li>
-<li>Use statistics over human-annotated data to select the most frequent sense</li>
-<li>etc.</li>
+<li>adjust tokenization and text normalization to better capture the individual words</li>
+<li>use part-of-speech tagging to narrow the results</li>
+<li>avoid annotating unlikely senses on common words (like <code>angstrom.n.01</code> for <em>a</em>)</li>
+<li>use sense-tag frequencies (from a gold corpus) to choose the most frequent sense</li>
 </ul>
-<p>You and your group will start with the basic, <em>baseline</em> model, and produce different versions with various improvements. You will then estimate the quality of your tagger against human-annotated <em>gold</em> data.</p>
-<p><em>More details to come</em></p>
+<p>There are a few related tasks necessary to complete the assignment:</p>
+<ul>
+<li>evaluate your implementation against gold data</li>
+<li>write a report detailing your improvements and team member contributions</li>
+</ul>
+<p>I also want to see you use some software-engineering skills to develop the project. For example:</p>
+<ul>
+<li>track your requirements with <code>requirements.txt</code> or similar</li>
+<li>write clean, readable code</li>
+<li>write and run unit tests</li>
+<li>use GitHub issues and/or project boards to track which member is working on what</li>
+</ul>
+<p><strong>Note:</strong> for the most-frequent-sense, evaluation, and report tasks, details will be provided at a later time.</p>
+<h2 id="extra-credit">Extra Credit</h2>
+<p>There are two options (you can do both) for extra credit. The extra credit contributes towards this project and not your overall course grade (you can get 100% without doing extra credit, but cannot go over 100% with it).</p>
+<h3 id="multi-word-expression-mwes">Multi-Word Expression (MWEs)</h3>
+<p>Sometimes the best sense doesn’t tag a single word but multiple words. For instance, for “coffee filter” you could either tag it as:</p>
+<pre><code>coffee  coffee.n.01
+filter  filter.n.01</code></pre>
+<p>Or as:</p>
+<pre><code>coffee filter   coffee_filter.n.01</code></pre>
+<p>In general, the more precise sense is better. For this task, you would need to decide how to group words, how to look them up, collectively, in wordnet, and how to decide if a sense for the multi-word expression is better than those for individual words.</p>
+<h3 id="error-analysis">Error Analysis</h3>
+<p>After you have finished implementing your improvements and have evaluted the tagger’s performance, do a more thorough examination of the cases that went wrong. Are there obvious categories of error types? What might have caused these errors? What would need to be done to fix them?</p>
 </main>
 </body>
 </html>
