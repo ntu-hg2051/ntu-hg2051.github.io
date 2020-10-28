@@ -85,10 +85,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><a href="#task">Task</a></li>
 <li><a href="#directions-for-students">Directions for Students</a></li>
+<li><a href="#gold-data">Gold Data</a></li>
 <li><a href="#extra-credit">Extra Credit</a><ul>
 <li><a href="#multi-word-expression-mwes">Multi-Word Expression (MWEs)</a></li>
 <li><a href="#error-analysis">Error Analysis</a></li>
 </ul></li>
+<li><a href="#appendix-formatting-the-gold-data">Appendix: Formatting the Gold Data</a></li>
 </ul>
 </nav>
 <main>
@@ -116,9 +118,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>You are expected to implement the following improvements:</p>
 <ul>
 <li>adjust tokenization and text normalization to better capture the individual words</li>
-<li>use part-of-speech tagging to narrow the results</li>
+<li>use part-of-speech tagging to narrow the results (note that you will need to map your part-of-speech tagger’s tags to WordNet’s coarse set <code>n</code>, <code>v</code>, <code>a</code>, <code>r</code>)</li>
 <li>avoid annotating unlikely senses on common words (like <code>angstrom.n.01</code> for <em>a</em>)</li>
-<li>use sense-tag frequencies (from a gold corpus) to choose the most frequent sense</li>
+<li>use sense-tag frequencies (from a gold corpus; see below) to choose the most frequent sense</li>
 </ul>
 <p>There are a few related tasks necessary to complete the assignment:</p>
 <ul>
@@ -133,6 +135,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>use GitHub issues and/or project boards to track which member is working on what</li>
 </ul>
 <p><strong>Note:</strong> for the most-frequent-sense, evaluation, and report tasks, details will be provided at a later time.</p>
+<h2 id="gold-data">Gold Data</h2>
+<p>The gold data come from the SemCor corpus. You should use the training data for “eyeballing” (as we do below) and for training your system. You may also want to split off some development data to help with tuning your system. You should not evaluate with the gold data until you’re near completion. (Evaluation scripts will be provided soon.)</p>
+<ul>
+<li>Training data: <a href="static/semcor-train.txt" class="button">semcor-train.txt</a> (UTF-8, 7.1M)</li>
+<li>Testing data: <a href="static/semcor-test.txt" class="button">semcor-test.txt</a> (UTF-8, 236K)</li>
+<li>License: <a href="static/semcor-license.txt" class="button">semcor-license.txt</a></li>
+</ul>
+<p>The corpus has both part-of-speech and WordNet sense annotations. The annotations, however, are on <em>chunks</em> and not words; that is, multi-word expressions get a single tag. For example, let’s look at the first example of the training data:</p>
+<pre><code>The
+Fulton County Grand Jury        NE
+said    state.v.01
+Friday  friday.n.01
+an
+investigation   probe.n.01
+of
+Atlanta atlanta.n.01
+&#39;s
+recent  late.s.03
+primary election        primary.n.01
+produced        produce.v.04
+``
+no
+evidence        evidence.n.01
+&#39;&#39;
+that
+any
+irregularities  abnormality.n.04
+took place      happen.v.01
+.
+</code></pre>
+<p>You’ll note that some words, like <em>The</em>, <em>of</em>, or <em>’s</em>, do not have any annotation. Named entitles, such as <em>Fulton County Grand Jury</em> only get <code>NE</code> as the tag. <code>NE</code> is not a WordNet sense; SemCor gave a WordNet sense for a generic kind of named entity, such as <code>group.n.01</code>, but I discarded those because named entities are a difficult problem and I think we can just ignore them for this project. Some named entites, however, have a sense, such as <em>Atlanta</em>, because those senses exist in WordNet. Also note that some individual words (like <em>irregularities</em>) have one sense and some multi-word expressions (like <em>took place</em>) have one sense. If you look later in the file, you may also see that some sentences do not have annotation on words that clearly could be given a sense. That is, the annotation is incomplete.</p>
 <h2 id="extra-credit">Extra Credit</h2>
 <p>There are two options (you can do both) for extra credit. The extra credit contributes towards this project and not your overall course grade (you can get 100% without doing extra credit, but cannot go over 100% with it).</p>
 <h3 id="multi-word-expression-mwes">Multi-Word Expression (MWEs)</h3>
@@ -144,6 +177,70 @@ filter  filter.n.01</code></pre>
 <p>In general, the more precise sense is better. For this task, you would need to decide how to group words, how to look them up, collectively, in wordnet, and how to decide if a sense for the multi-word expression is better than those for individual words.</p>
 <h3 id="error-analysis">Error Analysis</h3>
 <p>After you have finished implementing your improvements and have evaluted the tagger’s performance, do a more thorough examination of the cases that went wrong. Are there obvious categories of error types? What might have caused these errors? What would need to be done to fix them?</p>
+<h2 id="appendix-formatting-the-gold-data">Appendix: Formatting the Gold Data</h2>
+<p>The gold data comes from the SemCor corpus. If you want to adapt the code, you can reuse this. Just save it to a file and run it and it will write the two files in the current directory. Otherwise there is no need to run or understand this code.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb6-1" title="1"><span class="im">import</span> nltk</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="im">from</span> nltk.corpus <span class="im">import</span> wordnet <span class="im">as</span> wn</a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="im">from</span> nltk.corpus <span class="im">import</span> semcor</a>
+<a class="sourceLine" id="cb6-4" title="4"></a>
+<a class="sourceLine" id="cb6-5" title="5">train <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb6-6" title="6">test <span class="op">=</span> []</a>
+<a class="sourceLine" id="cb6-7" title="7"></a>
+<a class="sourceLine" id="cb6-8" title="8"><span class="co"># Semcor has both POS and WordNet sense tags. Specify WN senses with &#39;sem&#39;</span></a>
+<a class="sourceLine" id="cb6-9" title="9"><span class="co"># Use enumerate() to keep track of which sentence we&#39;re on</span></a>
+<a class="sourceLine" id="cb6-10" title="10"><span class="cf">for</span> i, sent <span class="kw">in</span> <span class="bu">enumerate</span>(semcor.tagged_sents(tag<span class="op">=</span><span class="st">&#39;sem&#39;</span>), <span class="dv">1</span>):</a>
+<a class="sourceLine" id="cb6-11" title="11">    sent_data <span class="op">=</span> []  <span class="co"># reset list for each sentence</span></a>
+<a class="sourceLine" id="cb6-12" title="12"></a>
+<a class="sourceLine" id="cb6-13" title="13">    <span class="co"># tagged_sents() returns a list of chunks</span></a>
+<a class="sourceLine" id="cb6-14" title="14">    <span class="cf">for</span> chunk <span class="kw">in</span> sent:</a>
+<a class="sourceLine" id="cb6-15" title="15"></a>
+<a class="sourceLine" id="cb6-16" title="16">        <span class="co"># semcor tags chunks of text as tree objects;</span></a>
+<a class="sourceLine" id="cb6-17" title="17">        <span class="cf">if</span> <span class="bu">isinstance</span>(chunk, nltk.tree.Tree):</a>
+<a class="sourceLine" id="cb6-18" title="18">            words <span class="op">=</span> chunk.leaves()  <span class="co"># leaves of the tree are a list of words</span></a>
+<a class="sourceLine" id="cb6-19" title="19">            label <span class="op">=</span> chunk.label()   <span class="co"># label could be one of several things</span></a>
+<a class="sourceLine" id="cb6-20" title="20"></a>
+<a class="sourceLine" id="cb6-21" title="21">            <span class="co"># ignore any synset for named entities</span></a>
+<a class="sourceLine" id="cb6-22" title="22">            <span class="cf">if</span> chunk.height() <span class="op">==</span> <span class="dv">3</span> <span class="kw">and</span> chunk[<span class="dv">0</span>].label() <span class="op">==</span> <span class="st">&#39;NE&#39;</span>:</a>
+<a class="sourceLine" id="cb6-23" title="23">                label <span class="op">=</span> <span class="st">&#39;NE&#39;</span></a>
+<a class="sourceLine" id="cb6-24" title="24">            <span class="co"># some other string labels may be synset identifiers (but maybe not)</span></a>
+<a class="sourceLine" id="cb6-25" title="25">            <span class="cf">elif</span> <span class="bu">isinstance</span>(label, <span class="bu">str</span>):</a>
+<a class="sourceLine" id="cb6-26" title="26">                <span class="cf">try</span>:</a>
+<a class="sourceLine" id="cb6-27" title="27">                    label <span class="op">=</span> wn.synset(label).name()</a>
+<a class="sourceLine" id="cb6-28" title="28">                <span class="cf">except</span> (<span class="pp">ValueError</span>, nltk.corpus.reader.wordnet.WordNetError):</a>
+<a class="sourceLine" id="cb6-29" title="29">                    <span class="cf">pass</span></a>
+<a class="sourceLine" id="cb6-30" title="30">            <span class="co"># most will be Lemma objects; get the synset</span></a>
+<a class="sourceLine" id="cb6-31" title="31">            <span class="cf">elif</span> <span class="bu">isinstance</span>(label, nltk.corpus.reader.wordnet.Lemma):</a>
+<a class="sourceLine" id="cb6-32" title="32">                label<span class="op">=</span> label.synset().name()</a>
+<a class="sourceLine" id="cb6-33" title="33">            <span class="co"># ignore anything else</span></a>
+<a class="sourceLine" id="cb6-34" title="34">            <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb6-35" title="35">                label <span class="op">=</span> <span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb6-36" title="36"></a>
+<a class="sourceLine" id="cb6-37" title="37">        <span class="co"># untagged text appears as a list of words</span></a>
+<a class="sourceLine" id="cb6-38" title="38">        <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb6-39" title="39">            words <span class="op">=</span> chunk</a>
+<a class="sourceLine" id="cb6-40" title="40">            label <span class="op">=</span> <span class="st">&#39;&#39;</span></a>
+<a class="sourceLine" id="cb6-41" title="41"></a>
+<a class="sourceLine" id="cb6-42" title="42">        sent_data.append(<span class="ss">f&#39;</span><span class="sc">{</span><span class="st">&quot; &quot;</span><span class="sc">.</span>join(words)<span class="sc">}</span><span class="ch">\t</span><span class="sc">{</span>label<span class="sc">}</span><span class="ss">&#39;</span>)</a>
+<a class="sourceLine" id="cb6-43" title="43"></a>
+<a class="sourceLine" id="cb6-44" title="44">    <span class="co"># Done with a sentence; put every tenth one into the testing data</span></a>
+<a class="sourceLine" id="cb6-45" title="45">    <span class="cf">if</span> i <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</a>
+<a class="sourceLine" id="cb6-46" title="46">        test.append(sent_data)</a>
+<a class="sourceLine" id="cb6-47" title="47">    <span class="cf">else</span>:</a>
+<a class="sourceLine" id="cb6-48" title="48">        train.append(sent_data)</a>
+<a class="sourceLine" id="cb6-49" title="49"></a>
+<a class="sourceLine" id="cb6-50" title="50"><span class="co"># print to training file</span></a>
+<a class="sourceLine" id="cb6-51" title="51"><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;semcor-train.txt&#39;</span>, <span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</a>
+<a class="sourceLine" id="cb6-52" title="52">    <span class="cf">for</span> lines <span class="kw">in</span> train:</a>
+<a class="sourceLine" id="cb6-53" title="53">        <span class="cf">for</span> line <span class="kw">in</span> lines:</a>
+<a class="sourceLine" id="cb6-54" title="54">            <span class="bu">print</span>(line, <span class="bu">file</span><span class="op">=</span><span class="bu">file</span>)</a>
+<a class="sourceLine" id="cb6-55" title="55">        <span class="bu">print</span>(<span class="bu">file</span><span class="op">=</span><span class="bu">file</span>)  <span class="co"># print a blank line after each sentence</span></a>
+<a class="sourceLine" id="cb6-56" title="56"></a>
+<a class="sourceLine" id="cb6-57" title="57"><span class="co"># print to testing file</span></a>
+<a class="sourceLine" id="cb6-58" title="58"><span class="cf">with</span> <span class="bu">open</span>(<span class="st">&#39;semcor-test.txt&#39;</span>, <span class="st">&#39;w&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>) <span class="im">as</span> <span class="bu">file</span>:</a>
+<a class="sourceLine" id="cb6-59" title="59">    <span class="cf">for</span> lines <span class="kw">in</span> test:</a>
+<a class="sourceLine" id="cb6-60" title="60">        <span class="cf">for</span> line <span class="kw">in</span> lines:</a>
+<a class="sourceLine" id="cb6-61" title="61">            <span class="bu">print</span>(line, <span class="bu">file</span><span class="op">=</span><span class="bu">file</span>)</a>
+<a class="sourceLine" id="cb6-62" title="62">        <span class="bu">print</span>(<span class="bu">file</span><span class="op">=</span><span class="bu">file</span>)  <span class="co"># print a blank line after each sentence</span></a></code></pre></div>
 </main>
 </body>
 </html>
