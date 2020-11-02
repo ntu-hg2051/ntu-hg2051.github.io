@@ -20,20 +20,67 @@
 </header>
 <nav id="TOC">
 <ul>
-<li><a href="#learning-objectives">Learning Objectives</a></li>
-<li><a href="#reading">Reading</a></li>
-<li><a href="#testing-your-knowledge">Testing Your Knowledge</a></li>
+<li><a href="#reading">Reading</a><ul>
+<li><a href="#ethics-in-nlp">Ethics in NLP</a></li>
+<li><a href="#language-models">Language Models</a></li>
+<li><a href="#software">Software</a></li>
+</ul></li>
 </ul>
 </nav>
 <main>
-<h2 id="learning-objectives">Learning Objectives</h2>
-<ul>
-<li>Concepts:</li>
-</ul>
-<p>(color key: <span class="py">Python/Programming</span> <span class="nlp">NLP/CL</span> <span class="eng">Software Engineering</span>)</p>
 <h2 id="reading">Reading</h2>
-<p>https://ryan.georgi.cc/courses/575-ethics-win-19/</p>
-<h2 id="testing-your-knowledge">Testing Your Knowledge</h2>
+<h3 id="ethics-in-nlp">Ethics in NLP</h3>
+<p>Computational linguistics and natural language processing have, in the recent decade or two, been quickly propelled from somewhat niche academic interest to a huge industry with many consumer-facing products (e.g., Google Translate, Siri, autocomplete, etc.) and other applied systems (stock market prediction, risk assessment, hate speech detection, etc.). Unfortunately, the explosion of popularity did not coincide with increased understanding of the ethical questions particular to the field.</p>
+<p>Please read the following short paper as a broad overview of the problems:</p>
+<ul>
+<li>Dirk Hovy and Shannon L. Spruit. <a href="https://www.aclweb.org/anthology/P16-2096.pdf">The Social Impact of Natural Language Processing</a>. In the <em>Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics</em>. 2016.</li>
+</ul>
+<p><strong>Questions</strong></p>
+<ul>
+<li><p>Why, in the authors’ view, has there been few discussions about ethics in NLP, and what situation has changed to make such discussions more urgent?</p></li>
+<li>Give examples of ethical problems for the following sources:
+<ul>
+<li><em>exclusion</em></li>
+<li><em>overgeneralization</em></li>
+<li><em>overexposure</em> / <em>underexposure</em></li>
+<li><em>dual-use</em></li>
+</ul></li>
+</ul>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li>There are many links to papers and course websites in the ACL wiki on <a href="https://aclweb.org/aclwiki/Ethics_in_NLP">Ethics in NLP</a></li>
+</ul>
+<h3 id="language-models">Language Models</h3>
+<p>A “language model” is a model that gives a probability for a sequence of words and/or predicts missing (e.g., next) words in a sequence. They are used for judging the fluency of machine translation outputs and for text generation. The traditional method of creating language models uses n-grams. For this, read the following sections from Jurafsky and Martin’s <em>Speech and Natural Language Processing</em>:</p>
+<ul>
+<li><a href="http://web.stanford.edu/~jurafsky/slp3/3.pdf">JM 3 – N-gram Language Models</a> Just the introduction and <em>3.1 – N-grams</em>.</li>
+</ul>
+<p>In recent years, “neural language models”, in particular <a href="https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)">transformer</a>-based models like <a href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a> and <a href="https://en.wikipedia.org/wiki/GPT-3">GPT-3</a>, have completely altered the direction of academic research and industry applications of NLP. The quality of their generated text is so good that it is often indistinguishable from human-produced text, at least when the prompts or outputs are carefully selected. Advocates of these models get mesmerized by the “magic” of their <a href="https://en.wikipedia.org/wiki/BERT_(language_model)#Analysis">uninterpretable performance</a> and may claim that they “understand” or “comprehend” text. Critics point out that they have only memorized and resynthesized linguistic form without any other signals (e.g., vision, sound, joint attention and social context, etc.) and cannot possibly have any true understanding of the world. The Bender and Koller (2020) paper (see “additional reading”, below) does an in-depth look at the claims of machine comprehension (and don’t miss the humorous example outputs of GPT-2 in the appendix).</p>
+<p><strong>Additional Reading</strong></p>
+<ul>
+<li>Wikipedia article on <a href="https://en.wikipedia.org/wiki/Language_model">Language Model</a> (a bit dry, but it’s a decent survey)</li>
+<li>Emily M. Bender and Alexander Koller. <a href="https://www.aclweb.org/anthology/2020.acl-main.463.pdf">Climbing towards NLU: On Meaning, Form, and Understanding in the Age of Data</a>. In the <em>Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics</em>. 2020.</li>
+</ul>
+<h3 id="software">Software</h3>
+<p>The following are some additional libraries for Python that you may find useful for NLP:</p>
+<ul>
+<li>General-purpose, pretrained models:
+<ul>
+<li><a href="https://spacy.io/" class="uri">https://spacy.io/</a></li>
+<li><a href="https://stanfordnlp.github.io/stanza/" class="uri">https://stanfordnlp.github.io/stanza/</a></li>
+</ul></li>
+<li>Useful for data science or for designing machine-learning experiments:
+<ul>
+<li><a href="https://allennlp.org/" class="uri">https://allennlp.org/</a></li>
+<li><a href="https://pandas.pydata.org/" class="uri">https://pandas.pydata.org/</a></li>
+<li><a href="https://scikit-learn.org/stable/" class="uri">https://scikit-learn.org/stable/</a></li>
+</ul></li>
+<li>If you are taking/plan to take a course in HPSG:
+<ul>
+<li><a href="https://github.com/delph-in/pydelphin" class="uri">https://github.com/delph-in/pydelphin</a></li>
+</ul></li>
+</ul>
+<p>There are tons more. E.g., here’s an “Awesome” list of NLP software for Python (and other languages): <a href="https://github.com/keon/awesome-nlp#user-content-python" class="uri">https://github.com/keon/awesome-nlp#user-content-python</a></p>
 </main>
 </body>
 </html>
