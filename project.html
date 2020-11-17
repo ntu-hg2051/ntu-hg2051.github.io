@@ -108,6 +108,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The evaluation script is uploaded. Download link is <a href="#evaluation">below</a></li>
 <li>(2020-11-16) I added more information on the <a href="#report">Report</a> format</li>
 <li>(2020-11-16) I expanded on <a href="#producing-annotations">producing annotations</a> and file redirection</li>
+<li>(2020-11-17) I clarified in the <a href="#appendix-formatting-the-gold-data">appendix</a> that students are not expected to do anything for that section</li>
+<li>(2020-11-17) I explained why you would need to use the code in <a href="#looking-up-synsets-from-synset-ids">Looking Up Synsets From Synset-IDs</a></li>
 </ol>
 <h2 id="task">Task</h2>
 <p>You will improve upon a basic, automatic WordNet sense tagger. You can create a basic tagger using the NLTK as follows:</p>
@@ -192,7 +194,7 @@ took place      happen.v.01
 <a class="sourceLine" id="cb4-7" title="7">(<span class="st">&#39;Fulton&#39;</span>, <span class="st">&#39;County&#39;</span>, <span class="st">&#39;Grand&#39;</span>, <span class="st">&#39;Jury&#39;</span>) label<span class="op">=</span><span class="st">&#39;NE&#39;</span></a>
 <a class="sourceLine" id="cb4-8" title="8">(<span class="st">&#39;said&#39;</span>,) label<span class="op">=</span><span class="st">&#39;state.v.01&#39;</span></a></code></pre></div>
 <h3 id="looking-up-synsets-from-synset-ids">Looking Up Synsets From Synset-IDs</h3>
-<p>When you read the labels from the gold data, you might get one of the following:</p>
+<p>The <code>sense-tag.py</code> script expects <code>sense_tag()</code> in <code>tagger.py</code> to return a list of (word, synset) pairs where the synset is either a <code>Synset</code> object from the NLTK’s WordNet module or <code>None</code>, meaning no-synset. You therefore have a need to lookup synsets from the synset identifiers in the gold data (so <code>sense_tag()</code> can return the proper objects). You should <em>not</em> try to split the word form and part-of-speech out of the synset identifier (e.g., to get <code>"friday"</code> and <code>"n"</code> from <code>"friday.n.01"</code>) and then look it up with <code>wn.synsets(...)</code> because it’s not guaranteed to get the same synset. Instead use <code>wn.synset(...)</code> with the identifier as its only argument. However, there are some challenges when doing this. When you read the labels from the gold data, you might get one of the following:</p>
 <ul>
 <li>A valid synset ID, e.g., <code>friday.n.01</code></li>
 <li><code>None</code></li>
@@ -204,7 +206,8 @@ took place      happen.v.01
 <a class="sourceLine" id="cb5-2" title="2">    synset <span class="op">=</span> wn.synset(label)</a>
 <a class="sourceLine" id="cb5-3" title="3"><span class="cf">except</span> (<span class="pp">AttributeError</span>, <span class="pp">ValueError</span>, nltk.corpus.reader.wordnet.WordNetError):</a>
 <a class="sourceLine" id="cb5-4" title="4">    synset <span class="op">=</span> <span class="va">None</span></a></code></pre></div>
-<p>You can put this in your function somewhere (and import <code>nltk</code>) and it can help if you need to get the NLTK’s <code>Synset</code> objects for these labels. Note that it is not necessary to use this code if your implementation does not try to look up synsets by IDs with <code>wn.synset()</code>.</p>
+<p>You can put this in your function somewhere (and import <code>nltk</code>) and it can help if you need to get the NLTK’s <code>Synset</code> objects for these labels.</p>
+<p>An alternative to the above is to modify <code>sense-tag.py</code> so it doesn’t expect <code>sense_tag()</code> to return <code>Synset</code> objects, but in general I think the above is easier.</p>
 <h2 id="producing-annotations">Producing Annotations</h2>
 <p>Once your code is working, you can run <code>sense-tag.py</code> as a script with a sentence file as its argument. For example:</p>
 <pre class="console"><code>$ python sense-tag.py semcor-test-sents.txt</code></pre>
@@ -263,7 +266,8 @@ filter  filter.n.01</code></pre>
 <h3 id="error-analysis">Error Analysis</h3>
 <p>After you have finished implementing your improvements and have evaluted the tagger’s performance, do a more thorough examination of the cases that went wrong. Are there obvious categories of error types? What might have caused these errors? What would need to be done to fix them?</p>
 <h2 id="appendix-formatting-the-gold-data">Appendix: Formatting the Gold Data</h2>
-<p>The gold data comes from the SemCor corpus. If you want to adapt the code, you can reuse this. Just save it to a file and run it and it will write the two files in the current directory. Otherwise there is no need to run or understand this code.</p>
+<p><strong>Note: You are not expected to do anything with the following code!</strong></p>
+<p>The gold data comes from the SemCor corpus. I used the code below to create the formatted <code>semcor-train.txt</code> and <code>semcor-test.txt</code> files. If you are curious about how it works, you can see the code below. You do not need to run or understand the code for your group project.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb11-1" title="1"><span class="im">import</span> nltk</a>
 <a class="sourceLine" id="cb11-2" title="2"><span class="im">from</span> nltk.corpus <span class="im">import</span> wordnet <span class="im">as</span> wn</a>
 <a class="sourceLine" id="cb11-3" title="3"><span class="im">from</span> nltk.corpus <span class="im">import</span> semcor</a>
